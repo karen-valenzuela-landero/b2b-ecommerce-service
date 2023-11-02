@@ -1,4 +1,12 @@
 body {
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
   }
+.form{
+  background-color: darkgray;
+  color: black;
+  padding: 20px;
+  text-align: justify;
+  font-family: sans-serif;
+  border-radius: 10px;
+}
 

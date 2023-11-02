@@ -1,18 +1,28 @@
-# MagicSoft
-Este es un repositorio donde trabajaremos nuestro proyecto integrador de GenerationMéxico de la Cohorte 33.
+# Project
+Project's Personal version. In this repository I'll be developing the project assigned, and for the collaborations in the common project repository, I'll take code from here and copy/paste there.
 
-## Integrantes
+## Author
 
 [Karen Valenzuela Landero](https://github.com/karen-valenzuela-landero)<br />
-[Ingrid Sofia Romero Morales](https://github.com/Ingridrom)<br />
-[Angela Vera Gonzalez](https://github.com/averagon)<br />
-[Jazmín Rodríguez González](https://github.com/SandraMolko/MagicSoft)<br />
-[Sandra Meraz Román](https://github.com/SandraMolko)<br />
-[Fabiola Valdes Ayon](https://github.com/fab77777)<br />
-[Ana Daniela Sanchez](https://github.com/danielaarr) <br />
-[Concepcion Carolina Ayala Rodriguez](https://github.com/Conchis1031)<br />
-
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Structure
+The files for general structure and design are:
+ - style.css for grid and principal sections colors and dimentions.
+ - main.js for general JS actions/events.
+ - navbar.js for navbar section implemented in all pages.
+ - footer.js for footer section implemented in all pages.
+
+In the HEAD call the CSS in following order:
+ 1. style.css
+ 2. specific page css
+
+At the end of the BODY call the scripts in the followin order:
+ 1. navbar.js
+ 2. main.js
+ 3. specific page js
+ 4. footer.js
