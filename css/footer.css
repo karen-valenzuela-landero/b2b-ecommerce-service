@@ -25,9 +25,10 @@ body#templade{
     padding-bottom: 10px;
     display: inline-block;
 }
-
-.footer-links ul li a{
+.footer-links ul li{
     list-style: none;
+}
+.footer-links ul li a{
     font-size: 18px;
     text-decoration: none;
     color: #bbbbbb;
@@ -37,7 +38,6 @@ body#templade{
 }
 
 .footer-links ul li a:hover{
-    list-style: none;
     color: white;
     padding-left: 6px;
 }

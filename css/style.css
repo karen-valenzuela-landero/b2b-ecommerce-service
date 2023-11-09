@@ -11,45 +11,29 @@ html{
 }
 .grid-container > *{
     padding-top: 0px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 .navbar{
     grid-area: navbar;
     background-color: #294BF3; 
     height: fit-content;
-    /* display: flex;
-    justify-content: space-between; */
 }
-/* #navbar{
-    display: flex;
-    justify-content: space-between;
-}  
-.navbar-toggler{
-    float: end;
-    justify-content: space-between;
-}
-#navbarNav{
-    float: right;
-    justify-content:space-between;
-}
-.izq{
-    float: end;
-} */
 .header{
     grid-area: header;
-    padding: 0px;
-    overflow: hidden;
-    height: 1080px;
     width: 100%;
+    height: fit-content;
+}
+.main{
+    grid-area: main;
+    display: grid;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
 }
 .sidebar{
     grid-area: sidebar ;
     background-color: blueviolet;
-}
-.main{
-    grid-area: main;
-    width: 90%;
-   
 }
 .footer{
     grid-area: footer;
@@ -57,13 +41,10 @@ html{
     height: fit-content;
     padding: 40px 0; 
 }
-
-
-
 /*Mobile*/
 .grid-container{
     display: grid;
-    gap: 10px;
+    gap: 0px;
     grid-template-areas:
     "navbar"
     "header"
@@ -75,7 +56,7 @@ html{
 @media(min-width:768px){
     .grid-container{
         grid-template-columns: auto ;
-        grid-template-rows: 100px 50px auto 100px;
+        grid-template-rows: auto;
         grid-template-areas: 
         "navbar navbar"
         "header header"
@@ -88,7 +69,8 @@ html{
 @media(min-width:900px){
     .grid-container{
         grid-template-columns: auto ;
-        grid-template-rows: 100px 50px auto 100px;
+        /* grid-template-rows: 100px 50px auto 100px; */
+        grid-template-rows: auto;
         grid-template-areas: 
         "navbar navbar navbar"
         "header header header"

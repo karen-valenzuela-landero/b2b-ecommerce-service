@@ -1,8 +1,8 @@
 //News API 
 //Your API key is: 3757c1f8012a40c09a18beb3267259fa
 
-const container = document.querySelector(".container");
-const optionsContainer = document.querySelector(".options-container");
+const containerPosts = document.getElementById("posts-container");
+//const optionsContainer = document.querySelector(".options-container");
 const country = "mx";
 const options = [
   "technology"
@@ -28,13 +28,13 @@ const generateUI = (articles) => {
       </div>
       <a href="${item.url}" target="_blank" class="view-button">Ver más</a>
     </div>`;
-    container.appendChild(card);
+    containerPosts.appendChild(card);
   }
 };
 
 //News API Call
 const getNews = async () => {
-  container.innerHTML = "";
+  containerPosts.innerHTML = "";
   let response = await fetch(requestURL);
   if (!response.ok) {
     alert("Data unavailable at the moment. Please try again later");
@@ -46,7 +46,7 @@ const getNews = async () => {
 };
 
 //Category Selection
-const selectCategory = (e, category) => {
+/* const selectCategory = (e, category) => {
   let options = document.querySelectorAll(".option");
   options.forEach((element) => {
     element.classList.remove("active");
@@ -54,21 +54,21 @@ const selectCategory = (e, category) => {
   requestURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`;
   e.target.classList.add("active");
   getNews();
-};
+}; */
 
 //Options Buttons
-const createOptions = () => {
-  for (let i of options) {
-    optionsContainer.innerHTML += `<button class="option ${
-      i == "general" ? "active" : ""
-    }" onclick="selectCategory(event,'${i}')">${i}</button>`;
-  }
-};
+/* const createOptions = () => {
+   for (let i of options) {
+     optionsContainer.innerHTML += `<button class="option ${
+       i == "general" ? "active" : ""
+     }" onclick="selectCategory(event,'${i}')">${i}</button>`;
+   }
+ };  */
 
 const init = () => {
-  optionsContainer.innerHTML = "";
+  //optionsContainer.innerHTML = "";
   getNews();
-  createOptions();
+  //createOptions();
 };
 
 window.onload = () => {
