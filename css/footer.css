@@ -1,10 +1,6 @@
-/* inicio footer */
-
-body#templade{
+.footer.container{
     font-family: raleway;
     text-transform: capitalize;
-}
-.footer.container{
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -36,12 +32,10 @@ body#templade{
     margin-bottom: 15px;
     transition: all .3s ease;
 }
-
 .footer-links ul li a:hover{
     color: white;
     padding-left: 6px;
 }
-
 .social-link a{
     display: inline-block;
     min-height: 40px;
@@ -57,7 +51,6 @@ body#templade{
 .social-link a:hover{
     background-color: #00c3ff;
 }
-
 @media(max-width:991px){
     .footer-row{
         text-align: center;
@@ -67,5 +60,3 @@ body#templade{
         margin-bottom: 30px;
     }
 }
-
-/* fin footer */

@@ -33,7 +33,6 @@ html{
 }
 .sidebar{
     grid-area: sidebar ;
-    background-color: blueviolet;
 }
 .footer{
     grid-area: footer;
