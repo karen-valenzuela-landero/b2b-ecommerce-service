@@ -1,9 +1,9 @@
-let $service_id = document.getElementById("service_id");
+let $alert_container = document.getElementById("alert-container");
 let $service_name = document.getElementById("service_name");
 let $service_description = document.getElementById("service_description");
 let btnImageUpload = document.getElementById("filebutton");
 let btnsubmit = document.getElementById("submit");
-let data = new Array();
+let services = new Array();
 
 //Cloudinary
 var myWidget = cloudinary.createUploadWidget({
@@ -11,6 +11,8 @@ var myWidget = cloudinary.createUploadWidget({
     uploadPreset: 'my-preset'}, (error, result) => { 
       if (!error && result && result.event === "success") { 
         console.log('Done! Here is the image info: ', result.info); 
+        btnImageUpload.value == 1;
+        console.log(btnImageUpload.value); //test
       }
     }
   )
@@ -18,62 +20,55 @@ var myWidget = cloudinary.createUploadWidget({
     e.preventDefault();
     myWidget.open();
 }, false);
-// btnImageUpload.onchange = function () {
-//     const inputFile = this.files[0]
 
-//     const formData = new FormData()
-//     formData.append("file", inputFile)
-
-//     fetch(`377997331566533`, {
-//         method: "POST",
-//         body: formData,
-//     })
-//         .then((images) => {
-//             console.log(images.url) // here you can save image url into your database
-//         })
-//         .catch((err) => {
-//             console.log(err)
-//         })
-// }
-
-
+//Submit Data
 btnsubmit.addEventListener("click", function(event){
-    let isValid = true;
     event.preventDefault();
-
-    let type = "";
-    let title = "";
+    let isValid = true;
     let message = "";
-
-    if ($service_name.value.length < 5){
-        type = "error";
-        title = "Campo nombre";
-        message = "El nombre debe tener más de 5 caracteres";
-        popupconfirm(type,title,message);
-        isValid=false;
-    }//$service_name < 3
-    if ($service_description.value.length < 10){
-        type = "error";
-        title = "Campo Descripción";
-        message = "La descripción debe tener más de 10 caracteres";
-        popupconfirm(type,title, message);
-        isValid=false;
-    }//$service_description < 10
+    cleanWarnings();
     
+    if ($service_name.value.length < 10){
+        console.log("nomb: "+$service_name.value.length);
+        message = "El nombre debe tener más de 10 caracteres";
+        warningAlert($service_name, message);
+        isValid=false;
+    }   //$service_name < 10
+    if ($service_description.value.length < 20){
+        console.log("desc: "+$service_description.value.length);
+        message = "La descripción debe tener más de 20 caracteres";
+        warningAlert($service_description, message);
+        isValid=false;
+    }   //$service_description < 20
+    if(btnImageUpload.value == "")  {
+        console.log("img: "+btnImageUpload.value.length);
+        //alert('Por favor selecciona una imagen');
+        message = "Por favor seleccione una imagen";
+        warningAlert($service_description, message);
+        return false;
+    }   //btnImageUpload.value == ""
 
     if (isValid){
-        let service = `{"id" : "${$service_id.value}",
-            "nombre": "${$service_name.value}",
+        console.log("nomb: "+$service_name.value.length);
+        console.log("desc: "+$service_description.value.length);
+        console.log("img: "+btnImageUpload.value.length);
+
+        let service = `{"nombre": "${$service_name.value}",
             "descripción": "${$service_description.value}"
         }`;
-        data.push(JSON.parse(service));
-        localStorage.setItem("data", JSON.stringify(data));
+        services.push(JSON.parse(service)); //Agrega al array services el JSON de service
+        localStorage.setItem("services", JSON.stringify(services)); //Agrega al localStorage el array de servicios en String
+
+        //tests
+        console.log(typeof service);   //String
+        console.log(typeof JSON.parse(service));   //String a Objeto
+        console.log(typeof JSON.stringify(JSON.parse(service))); //Objeto a String
+        console.log(typeof services);     //array de Objetos
 
         taskcompleted("El Servicio ha sido guardado");
-        $service_id.value="";
         $service_name.value="";
         $service_description.value="";
-        $service_id.focus();
+        $service_name.focus();
     }
 });
 
@@ -94,24 +89,35 @@ function popupconfirm(type, title, message){
         text: message       //     text: "Something went wrong!"
       });
 }
-function alerts(message){
-    var warningAlert = document.getElementById("warning-alert");
-    // Create alert instance
-    var myAlert = new bootstrap.Alert(warningAlert);
 
-    btnCloseWarning.addEventListener("click", function(){
-        myAlert.close();
-    });
+function cleanWarnings(){
+    $alert_container.innerHTML = "";
+    $service_name.style.border="";
+    $service_description.style.border="";
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-    var btnCloseWarning = document.getElementById("close-warning");
-    var warningAlert = document.getElementById("warning-alert");
+function warningAlert(lblStyled, message){
 
-    // Create alert instance
-    var myAlert = new bootstrap.Alert(warningAlert);
+    lblStyled.style.border="solid thin red";
 
-    btnCloseWarning.addEventListener("click", function(){
-        myAlert.close();
-    });
-});
+    let showalert =
+        `<div class="alert alert-warning alert-dismissible show" role="alert" id="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" id="close-warning"></button>
+        </div>`;
+    $alert_container.insertAdjacentHTML("beforeend",showalert);
+    //$alert_container.innerHTML = showalert;
+}
+
+
+
+//https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-alerts.php
+/*  document.addEventListener("DOMContentLoaded", function(){
+     var btnCloseWarning = document.getElementById("close-warning");
+     var alert = document.getElementById("alert");
+     var myAlert = new bootstrap.Alert(alert);
+
+     btnCloseWarning.addEventListener("click", function(){
+         myAlert.close();
+     });
+ }); */
