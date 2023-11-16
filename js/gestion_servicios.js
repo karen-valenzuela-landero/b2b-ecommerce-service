@@ -4,16 +4,19 @@ let $service_description = document.getElementById("service_description");
 let btnImageUpload = document.getElementById("filebutton");
 let btnsubmit = document.getElementById("submit");
 let services = new Array();
+let infowidget;
 
+console.log($alert_container);
 //Cloudinary
 var myWidget = cloudinary.createUploadWidget({
     cloudName: 'dz4ctdoqw', 
     uploadPreset: 'my-preset'}, (error, result) => { 
       if (!error && result && result.event === "success") { 
         console.log('Done! Here is the image info: ', result.info); 
-        btnImageUpload.value == 1;
-        console.log(btnImageUpload.value); //test
-      }
+        infowidget = result.info; //test
+        console.log(infowidget);  //test
+        return infowidget;  //test
+    }
     }
   )
   btnImageUpload.addEventListener("click", function(e){
@@ -29,29 +32,30 @@ btnsubmit.addEventListener("click", function(event){
     cleanWarnings();
     
     if ($service_name.value.length < 10){
-        console.log("nomb: "+$service_name.value.length);
+        console.log("nomb: "+$service_name.value.length);//test
         message = "El nombre debe tener más de 10 caracteres";
         warningAlert($service_name, message);
         isValid=false;
     }   //$service_name < 10
     if ($service_description.value.length < 20){
-        console.log("desc: "+$service_description.value.length);
+        console.log("desc: "+$service_description.value.length); //test
         message = "La descripción debe tener más de 20 caracteres";
         warningAlert($service_description, message);
         isValid=false;
     }   //$service_description < 20
-    if(btnImageUpload.value == "")  {
-        console.log("img: "+btnImageUpload.value.length);
-        //alert('Por favor selecciona una imagen');
+    if(infowidget == "")  {   
+        console.log("btnimg: "+btnImageUpload.value);//test
+        console.log("cloudinary: "+infowidget);//test
         message = "Por favor seleccione una imagen";
-        warningAlert($service_description, message);
+        warningAlert(btnImageUpload, message);
         return false;
-    }   //btnImageUpload.value == ""
+    }
 
     if (isValid){
         console.log("nomb: "+$service_name.value.length);
         console.log("desc: "+$service_description.value.length);
-        console.log("img: "+btnImageUpload.value.length);
+        console.log("widget: "+ myWidget);
+        console.log("result.info: "+infowidget);
 
         let service = `{"nombre": "${$service_name.value}",
             "descripción": "${$service_description.value}"
@@ -60,10 +64,10 @@ btnsubmit.addEventListener("click", function(event){
         localStorage.setItem("services", JSON.stringify(services)); //Agrega al localStorage el array de servicios en String
 
         //tests
-        console.log(typeof service);   //String
+        /* console.log(typeof service);   //String
         console.log(typeof JSON.parse(service));   //String a Objeto
         console.log(typeof JSON.stringify(JSON.parse(service))); //Objeto a String
-        console.log(typeof services);     //array de Objetos
+        console.log(typeof services);   */   //array de Objetos
 
         taskcompleted("El Servicio ha sido guardado");
         $service_name.value="";
@@ -109,7 +113,17 @@ function warningAlert(lblStyled, message){
     //$alert_container.innerHTML = showalert;
 }
 
-
+btnClear.addEventListener("click", function(event){
+    event.preventDefault();
+    $alert_container.innerHTML = "";
+    $service_name.value="";
+    $service_description.value="";
+    $service_name.focus();
+    $service_name.style.border="";
+    $service_description.style.border="";
+  
+  
+  });
 
 //https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-alerts.php
 /*  document.addEventListener("DOMContentLoaded", function(){

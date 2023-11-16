@@ -13,19 +13,19 @@ html{
     padding-top: 0px;
     padding-bottom: 0px;
 }
-.navbar-brand img {
-    border-radius: 15%; 
-  }
+
 .navbar{
     grid-area: navbar;
+    text-decoration: none;
     background-image: url(https://wallpaperaccess.com/full/2195741.jpg);
     height: fit-content;
-    font-size: x-large;
+    justify-content: space-between;
+    color: #eee;
 }
-.header{
-    grid-area: header;
-    width: 100%;
-    height: fit-content;
+#navbar-container img {
+    width: 70px;
+    height: 70px;
+    border-radius: 15%; 
 }
 .main{
     grid-area: main;
@@ -35,27 +35,26 @@ html{
     justify-content: center;
     align-items: center;
     font-family: inherit;
+    background-color: #eee;
+    padding: 50px;
 }
-.sidebar{
-    grid-area: sidebar ;
-}
-.footer{
-    grid-area: footer;
-    background-color: #294BF3;
-    background-image: url(https://wallpaperaccess.com/full/2195741.jpg);
-    height: fit-content;
-    padding: 40px 0; 
-}
+
+
+
+
+
 /*Mobile*/
-.grid-container{
-    display: grid;
-    gap: 0px;
-    grid-template-areas:
-    "navbar"
-    "header"
-    "main"
-    "sidebar"
-    "footer" ;
+@media(min-width:320px){
+    .grid-container{
+        display: grid;
+        gap: 0px;
+        grid-template-areas:
+        "navbar"
+        "main";
+    }
+    .main{
+        padding: 10px 0;
+    }
 }
 /*Tablet*/
 @media(min-width:768px){
@@ -64,10 +63,10 @@ html{
         grid-template-rows: auto;
         grid-template-areas: 
         "navbar navbar"
-        "header header"
-        "main main"
-        "sidebar sidebar"
-        "footer footer";
+        "main main";
+    }
+    .main{
+        padding: 20px 0;
     }
 }
 /*Desktop*/
@@ -75,14 +74,9 @@ html{
     .grid-container{
         grid-template-columns: auto ;
         /* grid-template-rows: 100px 50px auto 100px; */
-        grid-template-rows: auto;
+        grid-template-rows: 70px auto;
         grid-template-areas: 
         "navbar navbar navbar"
-        "header header header"
-        "main main main"
-        "sidebar sidebar sidebar"
-        "footer footer footer";
+        "main main main";
     }
 }
-
-

@@ -54,18 +54,22 @@ window.onload = function() {
 }
 
 function validaciones(){
-  let contact_name = document.getElementById("contact_name").value;
-  let contact_company = document.getElementById("contact_companie").value;
-  let contact_mail = document.getElementById("contact_email").value;
-  let contact_phone = parseInt(document.getElementById("contact_phone").value);
-  let contact_message = document.getElementById("contact_message").value;
-  let contact_service = document.getElementById("contact_service").value; 
+  const contact_name = document.getElementById("contact_name").value;
+  const contact_company = document.getElementById("contact_company").value;
+  const contact_email = document.getElementById("contact_email").value;
+  const contact_phone = parseInt(document.getElementById("contact_phone").value);
+  const contact_message = document.getElementById("contact_message").value;
+  const contact_service = document.getElementById("contact_service"); 
+  const service_value = contact_service.options[contact_service.selectedIndex].value;
+  const service_text = contact_service.options[contact_service.selectedIndex].text;
+  console.log(service_value,service_text );
 
   console.log(`${contact_name} length:${contact_name.length} es tipo ${typeof(contact_name)}, 
   ${contact_company} length:${contact_company.length} es tipo ${typeof(contact_company)}, 
-  ${contact_mail} length:${contact_mail.length} es tipo ${typeof(contact_mail)},
+  ${contact_email} length:${contact_email.length} es tipo ${typeof(contact_email)},
   ${contact_phone} length:${contact_phone.toString().length} es tipo ${typeof(contact_phone)},
-  ${contact_service} length:${contact_service.length} es tipo ${typeof(contact_service)},
+  ${service_value} length:${service_value.length} es tipo ${typeof(service_value)},
+  ${service_text} length:${service_text.length} es tipo ${typeof(service_text)},
   ${contact_message} length:${contact_message.length} es tipo ${typeof(contact_message)} `);
 
   let msg_error;
@@ -81,7 +85,7 @@ function validaciones(){
   }
   //Reference: https://www.coderbox.net/blog/validar-email-usando-javascript-y-expresiones-regulares/
   let mailRegEx = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ 
-  if (mailRegEx.test(contact_mail) || contact_mail.length < 10) {
+  if (mailRegEx.test(contact_email) || contact_email.length < 10) {
     msg_error="El formato del correo es incorrecto";
     showErrorMessage(msg_error);
     return false;
@@ -91,7 +95,7 @@ function validaciones(){
     showErrorMessage(msg_error);
     return false;
   }
-  if (contact_service == 0) {
+  if (service_value == 0) {
     msg_error="Por favor selecciona una opción";
     showErrorMessage(msg_error);
     return false;

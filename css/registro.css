@@ -1,0 +1,38 @@
+
+.main{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    background-color: #eee;
+    padding: 20px;
+}
+form div{
+    margin: 0;
+}
+i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+i img{
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+    border-radius: 0;
+}
+
+img{
+    border-radius: 20px;
+}
+#boton-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btnSignUp{
+    margin: 20px 0;
+}
+
+
+

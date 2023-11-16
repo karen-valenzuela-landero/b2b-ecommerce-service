@@ -6,39 +6,52 @@
     <title>Gestión</title>
     <link rel="icon" type="image" href="./src/logoAMR.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    
+    <link rel="stylesheet" href="./css/gestion_servicios.css">
 </head>
 <body class="grid-container">
-   
-    
+    <!--===== NAVBAR [HTML Implemented] =====-->
+    <nav class="navbar">
+        <div id="navbar-container" class="container">
+            <img src="./src/logoAMR.png" alt="Logo AMR" class="navbar-brand">
+            <a href="./index.html" class="nav-link">Regresar a Inicio</a>
+        </div>
+    </nav>
+    <!--===== NAVBAR [HTML Implemented] =====-->
 
+    <!--===== SIDEBAR [HTML Implemented] =====-->
+    <!-- <aside class="sidebar">
+        <div id="sidebar-container" class="container-fluid">
+            <header>
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./src/logoAMR.png" alt="Logo AMR" width="80" height="80">
+                </a>
+                <p id="dash-title">
+                    Dashboard
+                </p>
+            </header>
+            <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#"><i class="ion-ios-analytics-outline"></i> <span>Overview</span></a></li>
+                <li><a href="#"><i class="ion-ios-chatboxes-outline"></i>Gestión de Publicaciones</a></li>
+                <li><a href="#"><i class="ion-ios-filing-outline"></i>Gestión de Cotizaciones</a></li>  
+            </ul>
+            </nav>
+        </div>
+    </aside>  -->  <!--===== END SIDEBAR [HTML Implemented] =====-->
+
+    <!--===== MAIN [HTML Implemented] =====-->
     <main class="main">
         <div class="container" id="services-container">
             
             <!-- Warning Alert -->
             <div id="alert-container">
-                <!-- <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert">
-                    <p>message</p>
-                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close" id="close-warning"
-                    onclick="closeAlert('alert-container');"></button>
-                  </div>  -->
+                
             </div>
-
-            
 
             <form class="form-horizontal">
                 <fieldset>
                     <!-- Form Name -->
                     <legend>Agregar Servicios</legend>
-                    <!-- Text input-->
-                    <!-- <div class="form-group">
-                        <label class="col-md-4 control-label" for="service_id">ID Servicio</label>  
-                        <div class="col-md-4">
-                            <input id="service_id" name="service_id" placeholder="ID Servicio" class="form-control input-md" required="" type="text" autofocus>
-                        </div>
-                    </div> -->
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="service_name">Nombre Servicio</label>  
@@ -46,14 +59,6 @@
                             <input id="service_name" name="service_name" placeholder="Nombre Servicio" class="form-control input-md" required type="text">
                         </div>
                     </div>
-                    <!-- Select Basic -->
-                    <!-- <div class="form-group">
-                        <label class="col-md-4 control-label" for="service_category">Categoría Servicio</label>
-                        <div class="col-md-4">
-                            <select id="service_category" name="service_category" class="form-control">
-                            </select>
-                        </div>
-                    </div> -->
                     <!-- Textarea -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="service_description">Descripción Servicio</label>
@@ -72,11 +77,16 @@
                             <input id="filebutton" name="filebutton" class="form-control input-file" required type="file" accept="image/png, .jpeg, .jpg">
                         </div>   
                     </div>
-                    <!-- Button -->
+                    <!-- Send Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="submit"> </label>
-                        <div class="col-md-4">
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary">Guardar</button>
+                        <div class="d-flex" id="btns">
+                            <div class="col-md-4">
+                                <button type="submit" id="submit" name="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="reset" id="btnClear" name="btnClear" class="btn btn-primary">Limpiar</button>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
