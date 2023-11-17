@@ -15,7 +15,7 @@
 .footer-links h4{
     font-size: 20px;
     color: white;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-weight: 500;
     border-bottom: 2px solid #00c3ff;
     padding-bottom: 10px;
@@ -51,12 +51,16 @@
 .social-link a:hover{
     background-color: #00c3ff;
 }
+#admin{
+    text-decoration: none;
+    color: white;
+}
 @media(max-width:991px){
     .footer-row{
         text-align: center;
     }
     .footer-links{
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 }
