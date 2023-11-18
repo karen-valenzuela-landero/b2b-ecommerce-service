@@ -81,10 +81,10 @@
     padding: 0.3em 0.2em;
     border-radius: 5px;
   }
-  .active {
-    background-color: #294BF3; /*afecta al menú del navbar*/
+  /* .active {
+    background-color: #294BF3; /*afecta al menú del navbar//
     color: #ffffff;
-  }
+  } */
   @media only screen and (max-width: 768px) {
     #posts-container {
       grid-template-columns: repeat(1, 1fr);

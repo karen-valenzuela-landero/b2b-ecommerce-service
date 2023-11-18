@@ -1,59 +1,19 @@
 const alert = document.getElementById("alert-container");
+let msj_error;
 
-function validarCampos() {
-  const nombre = document.getElementById("nombre").value;
-  const telefono = document.getElementById("telefono").value;
-  const email = document.getElementById("email").value;
-  const contraseña = document.getElementById("contraseña").value;
-  const contraseñaconf = document.getElementById("contraseñaconf").value;
-  
-  let msj_error;
-  if (nombre.length < 7) {
-    msj_error = "Por favor escribe tu nombre completo";
-    showErrorMessage(msj_error);
-    return false;
-  }
-  
-  let telefonoRegEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
-  if(!telefonoRegEx.test(telefono) ){
-    console.log(telefonoRegEx.test(telefono));
-      msj_error="El formato del teléfono es incorrecto";
-      showErrorMessage(msj_error);
-      return false;
-  }
-
-  let emailRegEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
-  if(!emailRegEx.test(email)|| email.length < 6){
-      msj_error="Por favor, verifica tu correo electrónico";
-      showErrorMessage(msj_error);
-      return false;
-  }
-
-  /*Especificaciones: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial*/
-  let contraseñaRegEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/
-  if(!contraseñaRegEx.test(contraseña)){
-      msj_error="La contraseña debe contener: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial (#?!@$ %^&*-).";
-      showErrorMessage(msj_error);
-      return false;
-  }
-
-  if (contraseñaconf.value !== contraseña.value) {
-    msj_error = "Verifica tu contraseña";
-    showErrorMessage(msj_error);
-    return false;
-  } 
-  return true;
-}
+const phoneRegEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
+const emailRegEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
+const passRegEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/
+/*Especificaciones: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial*/
 
 function showErrorMessage (msj_error){
-  let mostrarAlerta = 
+  let showAlert = 
     `<div class="alert alert-warning alert-dismissible show" role="alert" id="alert">
     ${msj_error}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" id="close-warning"></button> </div>`;
-  
-  alert.insertAdjacentHTML("beforeend",mostrarAlerta)
+  alert.insertAdjacentHTML("beforeend",showAlert)
   alert.focus();
-}
+}//showErrorMessage
 
 function taskcompleted (message){
   Swal.fire({
@@ -63,27 +23,104 @@ function taskcompleted (message){
       showConfirmButton: false,
       timer: 1500
     });
-}
+}//task completed
+
+function validateSignup($name,$phone,$email,$pass,$repPw) {  
+  if ($name.length < 7) {
+    msj_error = "Por favor escribe tu nombre completo";
+    showErrorMessage(msj_error);
+    return false;
+  }
+  if(!phoneRegEx.test($phone) ){
+      msj_error="El formato del teléfono es incorrecto";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  if(!emailRegEx.test($email)|| $email.length < 6){
+      msj_error="Por favor, verifica tu correo electrónico";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  if(!passRegEx.test($pass)){
+      msj_error="La contraseña debe contener: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial (#?!@$ %^&*-).";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  if ($repPw !== $pass) {
+    msj_error = "Verifica tu contraseña";
+    showErrorMessage(msj_error);
+    return false;
+  } 
+  return true;
+}//validateSignup
 
 const users = new Array(); 
 btnSignUp.addEventListener("click", function(event){
   event.preventDefault();
   alert.innerHTML = "";
-  let isValid = validarCampos();
+  let $name = document.getElementById("nombre");
+  let $phone = document.getElementById("telefono");
+  let $email = document.getElementById("email");
+  let $pass = document.getElementById("contraseña");
+  let $repPw = document.getElementById("contraseñaconf");
+  const isValid = validateSignup($name.value,$phone.value,$email.value,$pass.value,$repPw.value);
 
   if (isValid){
-    let registro = `{"nombre": "${nombre.value}",
-      "teléfono": "${telefono.value}","email": "${email.value}", "contraseña": "${contraseña.value}"
-      }`;
-    users.push(JSON.parse(registro)); //Agrega el array al JSON
+    let newUser = `{"nombre": "${$name.value}","teléfono": "${$phone.value}",
+      "email": "${$email.value}", "contraseña": "${$pass.value}"}`;
+    users.push(JSON.parse(newUser));
     localStorage.setItem("users", JSON.stringify(users));
 
     taskcompleted("El registro se ha hecho correctamente");
-    nombre.value="";
-    telefono.value="";
-    email.value="";
-    contraseña.value="";
-    contraseñaconf.value="";
-    nombre.focus();
+    $name.value="";
+    $phone.value="";
+    $email.value="";
+    $pass.value="";
+    $repPw.value="";
+    $name.focus();
+  }//isValid
+});//btnSignup
+  
+function validateLogin(mailLogin, passLogin) {
+  if(!emailRegEx.test(mailLogin) || mailLogin.length < 6){
+      msj_error="Por favor, verifica tu correo electrónico";
+      showErrorMessage(msj_error);
+      return false;
   }
-});
+  if(!passRegEx.test(passLogin)){
+      msj_error="La contraseña debe contener: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial (#?!@$ %^&*-).";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  return true;
+}//validateLogin
+
+btnLogin.addEventListener("click", function(event){
+  event.preventDefault();
+  alert.innerHTML = "";
+  const mailLogin = document.getElementById("mailLogin").value;
+  const passLogin = document.getElementById("passLogin").value;
+  const isValid = validateLogin(mailLogin, passLogin);
+
+  if (isValid){
+    const storedUsers = JSON.parse(localStorage.getItem("users"));
+    const user = storedUsers.find((person) => person.email == mailLogin);
+    console.log(typeof user, user );//
+    if(user == undefined){
+      msj_error="No existe usuario registrado con este correo";
+      showErrorMessage(msj_error);
+      console.log("MailNotFound:", msj_error, mailLogin);
+    } else {
+      if ( user.contraseña !== passLogin) {
+        msj_error="Contraseña Incorrecta";
+        showErrorMessage(msj_error);
+        console.log("IncorrectPassword:", msj_error, passLogin);
+      } else {
+        console.log("Correcto");
+        localStorage.setItem("user", mailLogin);
+        localStorage.setItem("pass", passLogin);
+        location.href ='./gestion_servicios.html';
+      }// if pass check
+    }// if user empty
+  }// isValid
+});//btnLogin

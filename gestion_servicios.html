@@ -48,6 +48,20 @@
                     <!-- Form Start -->
                     <form class="mx-1 mx-md-4">
                         <div id="form-container" class="container">
+                            <figure>
+                                <!-- placeholder for uploaded image -->
+                                <div id="upload_space">
+                                    <img id="uploadedimage" src="./src/icons/cloud-upload.png"></img>
+                                </div>
+                                <!-- File Button -->
+                                <button id="upload_widget" class="btn btn-primary">Seleccionar Imagen</button>
+                                <!-- <div class="form-group">
+                                    <label class="col-md-4 control-label" for="filebutton">Imagen</label>
+                                    <div class="col-md-4">
+                                        <input id="filebutton" name="filebutton" class="form-control input-file" required type="file" accept="image/png, .jpeg, .jpg">
+                                    </div>   
+                                </div> -->
+                            </figure>
                             <fieldset>
                                 <!-- Service Name-->
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -62,26 +76,15 @@
                                     <textarea id="service_description" name="service_description" placeholder="Descripción del Servicio" class="form-control input-md" required type="textarea" ></textarea>
                                 </div>
                             </fieldset>
-                            <figure>
-                                <!-- placeholder for uploaded image -->
-                                <img id="uploadedimage" src=""></img>
-                                <!-- File Button --> 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="filebutton">Imagen</label>
-                                    <div class="col-md-4">
-                                        <input id="filebutton" name="filebutton" class="form-control input-file" required type="file" accept="image/png, .jpeg, .jpg">
-                                    </div>   
-                                </div>
-                            </figure>
                         </div>
-                        <!-- Send Button -->
+                        <!-- Buttons -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="submit"> </label>
                             <div class="d-flex" id="btns">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <button type="submit" id="submit" name="submit" class="btn btn-primary">Enviar</button>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <button type="reset" id="btnClear" name="btnClear" class="btn btn-primary">Limpiar</button>
                                 </div>
                             </div>

@@ -1,12 +1,13 @@
 let $alert_container = document.getElementById("alert-container");
 let $service_name = document.getElementById("service_name");
 let $service_description = document.getElementById("service_description");
-let btnImageUpload = document.getElementById("filebutton");
+const imagen = document.getElementById("uploadedimage");
+let btnImageUpload = document.getElementById("upload_widget");
 let btnsubmit = document.getElementById("submit");
 let services = new Array();
 let infowidget;
+const imgDefault = "./src/icons/cloud-upload.png";
 
-console.log($alert_container);
 //Cloudinary
 var myWidget = cloudinary.createUploadWidget({
     cloudName: 'dz4ctdoqw', 
@@ -19,8 +20,8 @@ var myWidget = cloudinary.createUploadWidget({
             return infowidget;  //test
         }
     }
-)
-  btnImageUpload.addEventListener("click", function(e){
+);
+     btnImageUpload.addEventListener("click", function(e){
     e.preventDefault();
     myWidget.open();
 }, false);
@@ -28,6 +29,7 @@ var myWidget = cloudinary.createUploadWidget({
 //Submit Data
 btnsubmit.addEventListener("click", function(event){
     event.preventDefault();
+    //imagen.style.visibility = "visible";
     let isValid = true;
     let message = "";
     cleanWarnings();
@@ -60,20 +62,16 @@ btnsubmit.addEventListener("click", function(event){
 
         let service = `{"nombre": "${$service_name.value}",
             "descripción": "${$service_description.value}"
-        }`;
+            }`;
         services.push(JSON.parse(service)); //Agrega al array services el JSON de service
         localStorage.setItem("services", JSON.stringify(services)); //Agrega al localStorage el array de servicios en String
-
-        //tests
-        /* console.log(typeof service);   //String
-        console.log(typeof JSON.parse(service));   //String a Objeto
-        console.log(typeof JSON.stringify(JSON.parse(service))); //Objeto a String
-        console.log(typeof services);   */   //array de Objetos
 
         taskcompleted("El Servicio ha sido guardado");
         $service_name.value="";
         $service_description.value="";
         $service_name.focus();
+        imagen.src = imgDefault;
+        //imagen.style.visibility = "hidden";
     }
 });
 
@@ -122,7 +120,7 @@ btnClear.addEventListener("click", function(event){
     $service_name.focus();
     $service_name.style.border="";
     $service_description.style.border="";
-  
+    imagen.src = imgDefault;
   
   });
 

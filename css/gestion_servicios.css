@@ -9,10 +9,37 @@
 .card{
     padding: 20px;
 }
+#form-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 1em;
+    justify-content: center;
+}
+figure{
+    justify-content: center;
+}
+fieldset{
+    justify-content: center;
+}
+#upload_space{
+    width: 200px;
+    height: 200px;
+    background-color: #eee;
+}
+#uploadedimage{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+#btns{
+    justify-content: end;
+}
 
-
-
-
+@media only screen and (max-width: 425px) {
+    #form-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 
 
 
