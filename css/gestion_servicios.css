@@ -1,45 +1,45 @@
-.main{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    font-family: inherit;
-    background-color: #eee;
-    padding: 20px;
-}
+
 .card{
     padding: 20px;
+    margin: 20px;
 }
 #form-container{
-    display: grid;
+    display: flex;
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 1em;
+    grid-column-gap: 1em; */
     justify-content: center;
-}
-figure{
-    justify-content: center;
-}
-fieldset{
-    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 #upload_space{
-    width: 200px;
-    height: 200px;
+    display: flex;
+    justify-content: space-around;
     background-color: #eee;
 }
 #uploadedimage{
     object-fit: cover;
+    /* width: 200px;
+    height: 200px; */
     width:100%;
     height:100%;
 }
+#btnUpload_space{
+    display: flex;
+    justify-content: space-around;
+}
+#btnUploadWidget{
+    margin: 12px auto;
+}
 #btns{
-    justify-content: end;
+    justify-content: space-around;
 }
 
-@media only screen and (max-width: 425px) {
+/* @media only screen and (max-width: 425px) {
     #form-container {
       grid-template-columns: repeat(1, 1fr);
     }
-  }
+  } */
 
 
 

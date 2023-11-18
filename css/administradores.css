@@ -1,0 +1,47 @@
+
+section{
+    padding: 20px 20px 40px;
+}
+
+form div{
+    margin: 0;
+}
+i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+i img{
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+    border-radius: 0;
+}
+
+#boton-div button{
+    margin: 20px 0;
+    padding: 0 2.5rem; 
+}
+
+#copyright{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #0D6EFD;
+}
+
+@media only screen and (max-width: 768px) {
+    #copyright{
+        position: relative;
+        bottom: 0;
+        
+    }
+  }
+
+
+
+

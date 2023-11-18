@@ -24,63 +24,7 @@ function taskcompleted (message){
       timer: 1500
     });
 }//task completed
-
-function validateSignup($name,$phone,$email,$pass,$repPw) {  
-  if ($name.length < 7) {
-    msj_error = "Por favor escribe tu nombre completo";
-    showErrorMessage(msj_error);
-    return false;
-  }
-  if(!phoneRegEx.test($phone) ){
-      msj_error="El formato del teléfono es incorrecto";
-      showErrorMessage(msj_error);
-      return false;
-  }
-  if(!emailRegEx.test($email)|| $email.length < 6){
-      msj_error="Por favor, verifica tu correo electrónico";
-      showErrorMessage(msj_error);
-      return false;
-  }
-  if(!passRegEx.test($pass)){
-      msj_error="La contraseña debe contener: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial (#?!@$ %^&*-).";
-      showErrorMessage(msj_error);
-      return false;
-  }
-  if ($repPw !== $pass) {
-    msj_error = "Verifica tu contraseña";
-    showErrorMessage(msj_error);
-    return false;
-  } 
-  return true;
-}//validateSignup
-
-const users = new Array(); 
-btnSignUp.addEventListener("click", function(event){
-  event.preventDefault();
-  alert.innerHTML = "";
-  let $name = document.getElementById("nombre");
-  let $phone = document.getElementById("telefono");
-  let $email = document.getElementById("email");
-  let $pass = document.getElementById("contraseña");
-  let $repPw = document.getElementById("contraseñaconf");
-  const isValid = validateSignup($name.value,$phone.value,$email.value,$pass.value,$repPw.value);
-
-  if (isValid){
-    let newUser = `{"nombre": "${$name.value}","teléfono": "${$phone.value}",
-      "email": "${$email.value}", "contraseña": "${$pass.value}"}`;
-    users.push(JSON.parse(newUser));
-    localStorage.setItem("users", JSON.stringify(users));
-
-    taskcompleted("El registro se ha hecho correctamente");
-    $name.value="";
-    $phone.value="";
-    $email.value="";
-    $pass.value="";
-    $repPw.value="";
-    $name.focus();
-  }//isValid
-});//btnSignup
-  
+ 
 function validateLogin(mailLogin, passLogin) {
   if(!emailRegEx.test(mailLogin) || mailLogin.length < 6){
       msj_error="Por favor, verifica tu correo electrónico";
@@ -124,3 +68,59 @@ btnLogin.addEventListener("click", function(event){
     }// if user empty
   }// isValid
 });//btnLogin
+
+function validateSignup($name,$phone,$email,$pass,$repPw) {  
+  if ($name.length < 7) {
+    msj_error = "Por favor escribe tu nombre completo";
+    showErrorMessage(msj_error);
+    return false;
+  }
+  if(!phoneRegEx.test($phone) ){
+      msj_error="El formato del teléfono es incorrecto";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  if(!emailRegEx.test($email)|| $email.length < 6){
+      msj_error="Por favor, verifica tu correo electrónico";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  if(!passRegEx.test($pass)){
+      msj_error="La contraseña debe contener: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial (#?!@$ %^&*-).";
+      showErrorMessage(msj_error);
+      return false;
+  }
+  if ($repPw !== $pass) {
+    msj_error = "Verifica tu contraseña";
+    showErrorMessage(msj_error);
+    return false;
+  } 
+  return true;
+}//validateSignup
+
+const users = new Array(); 
+btnSignUp.addEventListener("click", function(event){
+  event.preventDefault();
+  alert.innerHTML = "";
+  let $name = document.getElementById("suName");
+  let $phone = document.getElementById("suPhone");
+  let $email = document.getElementById("suEmail");
+  let $pass = document.getElementById("suPass");
+  let $repPw = document.getElementById("suRepPass");
+  const isValid = validateSignup($name.value,$phone.value,$email.value,$pass.value,$repPw.value);
+
+  if (isValid){
+    let newUser = `{"nombre": "${$name.value}","teléfono": "${$phone.value}",
+      "email": "${$email.value}", "contraseña": "${$pass.value}"}`;
+    users.push(JSON.parse(newUser));
+    localStorage.setItem("users", JSON.stringify(users));
+
+    taskcompleted("Usuario registrado correctamente");
+    $name.value="";
+    $phone.value="";
+    $email.value="";
+    $pass.value="";
+    $repPw.value="";
+    $name.focus();
+  }//isValid
+});//btnSignup
