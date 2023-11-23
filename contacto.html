@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Contacto</title>
     <link rel="shortcut icon" href="/src/logoAMR.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -19,45 +19,70 @@
 
     <!-- CONTACT FORM -->
     <main class="main">
-        <form id="contact-form" class="form">
-            <div class="mb-3">
-              <label for="contact_name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="contact_name" name="contact_name" >
-            </div>
-            <div class="mb-3">
-              <label for="contact_company" class="form-label">Company</label>
-              <input type="text" class="form-control" id="contact_company" name="contact_company">
-            </div>
-            <div class="mb-3">
-              <label for="contact_email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="contact_email" name="contact_email" >
-            </div>
-            <div class="mb-3">
-              <label for="contact_phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control" id="contact_phone" name="contact_phone">
-            </div>
-
-            <div class="mb-3">
-                <p>Servicio que le gustaría obtener</p>
-                <select name="contact_service" id="contact_service" name="contact_service" title="contact_service">
-                  <option value="0">Elige una opción</option> 
-                  <option value="1">Distribución de equipo de cómputo</option> 
-                  <option value="2">Distribución de licencias de software y servicios en la nube</option>
-                  <option value="3">Desarrollo de software a la medida</option>
-                  <option value="4">Servicios financieros, arrendamiento</option>
-                  <option value="5">Servicios administrativos</option>
-                  <option value="6">Diseño de arquitectura de sistemas</option>
-                </select>
+      <div class="container">
+        <!--===== CONTACT [HTML Implemented] =====-->
+        <section class="container" >
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-8 col-lg-6 pb-4 col-xl-4 offset-xl-1">
+                    <!-- Form Name -->
+                    <p class="text-center h3 fw-bold mb-4 mx-1 mx-md-4 mt-4">Contáctanos</p>
+                    <!-- Warning Alert -->
+                    <div id="alert-container"></div>
+                    <!-- Form Start -->
+                    <form class="mx-1 mx-md-4" id="contact-form">     
+                        <!-- Company Name -->
+                        <div class="d-flex flex-row align-items-center mb-3">
+                          <i class="bi bi-building"><img src="./src/icons/building.svg" alt=""></i>
+                          <input type="text" id="contact_company" class="form-control form-control-md" name="contact_company" placeholder="Razón Social" />  
+                        </div>
+                        <!-- User Name -->
+                        <div class="d-flex flex-row align-items-center mb-3">
+                            <i class="bi bi-person-fill"><img src="./src/icons/person-fill.svg" alt=""></i>
+                            <input type="text" id="contact_name" class="form-control form-control-md" name="contact_name" placeholder="Nombre Completo" />  
+                        </div>
+                        <!-- User Phone -->
+                        <div class="d-flex flex-row align-items-center mb-3" >
+                            <i class="bi bi-telephone-fill"><img src="./src/icons/telephone-fill.svg" alt=""></i>
+                            <input type="text" id="contact_phone" class="form-control form-control-md" name="contact_phone" placeholder="Número Telefónico" />
+                        </div>
+                        <!-- User Email -->
+                        <div class="d-flex flex-row align-items-center mb-3">
+                            <i class="bi bi-envelope-fill"><img src="./src/icons/envelope-fill.svg" alt=""></i>
+                            <input type="email" id="contact_email" class="form-control form-control-md" name="contact_email" placeholder="Correo Electrónico" />
+                        </div>
+                        <!-- Services -->
+                        <div class="mb-3">
+                          <label for="contact_service">Servicio que le gustaría cotizar</label>
+                          <div class="d-flex flex-row align-items-center mb-3">
+                            <i class="bi bi-gear-fill"><img src="./src/icons/gear-fill.svg" alt=""></i>
+                            <select id="contact_service" class="form-control form-control-md" name="contact_service" title="contact_service">
+                              <option value="0">Elige una opción</option> 
+                              <option value="1">Distribución de equipo de cómputo</option> 
+                              <option value="2">Distribución de licencias de software y servicios en la nube</option>
+                              <option value="3">Desarrollo de software a la medida</option>
+                              <option value="4">Servicios financieros, arrendamiento</option>
+                              <option value="5">Servicios administrativos</option>
+                              <option value="6">Diseño de arquitectura de sistemas</option>
+                            </select>
+                          </div>
+                        </div>    
+                        <!-- Message -->
+                        <div class="d-flex flex-row align-items-center mb-3">
+                            <i class="bi bi-pencil-fill"><img src="./src/icons/pencil-fill.svg" alt=""></i>
+                            <textarea type="text" id="contact_message" class="form-control form-control-md" name="contact_message" placeholder="Escribe tu mensaje" autocomplete="off" ></textarea>
+                        </div>
+                        <!-- SignUp button -->
+                        <div id="boton-div" class="text-center mt-4 pt-2">
+                            <button type="submit" id="submit" class="btn btn-primary btn-lg" value="Send" formnovalidate >Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-9 col-lg-6 pb-4 col-xl-5 ">    
+                  <img src="./src/contact-us-bg.jpg" class="img-fluid" alt="Signup image">
               </div>
-
-            <div class="mb-3">
-              <label for="contact_message" class="form-label">Message</label>
-              <textarea type="text" class="form-control" id="contact_message" name="contact_message"></textarea>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="submit" class="btn btn-primary" value="Send" >Enviar</button>
-            </div>
-        </form>
+        </section><!--===== CONTACT [HTML Implemented] =====-->
+      </div><!-- Container -->
     </main><!-- END CONTACT FORM -->
 
     <!-- FOOTER [JS Implemented] -->

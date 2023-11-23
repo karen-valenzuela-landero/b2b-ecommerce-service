@@ -1,3 +1,4 @@
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -6,7 +7,9 @@
 body{
     min-height: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    background: -webkit-linear-gradient(180deg,#66f, rgb(232, 117, 117), rgba(82, 78, 78, 0.823));
+    background-image: url(../src/magicsoft-bg.png);
+    /* background-image: url(../src/footagecrate-4k-looping-network-tech-background-blue-1-prev-full.png); */
+    /*background: -webkit-linear-gradient(180deg,#66f, rgb(232, 117, 117), rgba(82, 78, 78, 0.823));*/
 }
 html{
     height: 100%;

@@ -13,15 +13,25 @@ html{
     padding-top: 0px;
     padding-bottom: 0px;
 }
-.navbar-brand img {
-    border-radius: 15%; 
-  }
 .navbar{
     grid-area: navbar;
-    background-image: url(https://wallpaperaccess.com/full/2195741.jpg);
+    /* background-image: url(https://wallpaperaccess.com/full/2195741.jpg); */
+    background-image: url(../src/magicsoft-bg.png);
     height: fit-content;
     font-size: x-large;
 }
+.navbar-brand img {
+    border-radius: 15%; 
+}
+.navbar.navbar-expand-lg.navbar-dark{
+    width: 100%;
+    height: fit-content;
+    padding:  0 20px;
+  }
+  .collapse.navbar-collapse{
+    justify-content: flex-end;
+  }
+
 .header{
     grid-area: header;
     width: 100%;
@@ -36,13 +46,11 @@ html{
     align-items: center;
     font-family: inherit;
 }
-.sidebar{
-    grid-area: sidebar ;
-}
 .footer{
     grid-area: footer;
     background-color: #294BF3;
-    background-image: url(https://wallpaperaccess.com/full/2195741.jpg);
+    /* background-image: url(https://wallpaperaccess.com/full/2195741.jpg); */
+    background-image: url(../src/magicsoft-bg.png);
     height: fit-content;
     padding: 40px 0; 
 }

@@ -1,0 +1,119 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#banner {
+    border-radius: 0;
+} 
+#banner img{
+    border-radius: 0;
+} 
+#banner h1{
+    padding: .5em;
+    color: white; 
+    font-weight: 800; 
+    font-size: 7.1vw; 
+    line-height: 8vw;
+}
+#banner p{
+    padding: 1em;
+    color: #00c3ff; 
+    font-weight: 600; 
+    font-size: 5vw; 
+    line-height: 5vw;
+}
+
+#servicios{
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #294BF3;
+    background-image: url(https://wallpaperaccess.com/full/2195741.jpg);
+}
+#desc{
+    color: white;
+   /*  font-weight: 150; */
+    font-size: 2.5vw;  
+}
+#title{
+    color: #00c3ff;
+    /* font-weight: 200;  */
+    font-size: 3vw; 
+}
+#servicios-list{
+    /* font-family: raleway; */
+    text-align: justify;
+    padding: 20px;
+}
+.card-title h5{
+    color: #00A3FF;
+}
+.card{
+    box-shadow: 3px 3px 3px rgb(188, 187, 187);
+    padding: 0px;
+}
+.card-body {
+    height: 200px;
+}
+
+/*===== NEW CARDS STYLE*/
+.col{
+    display:flex;
+    justify-content:center;
+    border-radius: 15px;
+}
+.flip-card {
+    background-color: transparent;
+    width: 320px;
+    height: 300px;
+    perspective: 1000px;
+    border-radius: 15px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 #294BF3;
+    border-radius: 15px;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    border-radius: 15px;
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+.flip-card-front {
+    /*background-color: #bbb;*/
+    /*background-image: url(https://images.pexels.com/photos/7134986/pexels-photo-7134986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);*/
+    color: floralwhite;
+    border-radius: 15px;
+} 
+.card-title{
+    color: #00A3FF;
+}
+.flip-card-inner img{
+    border-radius: 15px;
+}
+.card-img-overlay{
+    border-radius: 15px;
+}
+.flip-card-back {
+    /*background-color: #f0b7ec;*/
+    background-image: url("../src/BGGIF.gif");
+    color: floralwhite;
+    transform: rotateY(180deg);
+    border-radius: 15px;
+    box-sizing:content-box;
+    padding: 10px;
+}
+.parrafo {
+    font-size: 1em;
+    font-style: oblique;
+  }

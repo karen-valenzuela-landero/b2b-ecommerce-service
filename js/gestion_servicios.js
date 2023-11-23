@@ -1,9 +1,6 @@
-let $alert_container = document.getElementById("alert-container");
-
-let btnImageUpload = document.getElementById("upload_widget");
-let services = new Array();
-let infowidget;
+const $alert_container = document.getElementById("alert-container");
 const imgDefault = "./src/upload-image.jpg";
+let services = new Array();
 let message ;
 
 function taskcompleted (message){
@@ -14,22 +11,22 @@ function taskcompleted (message){
         showConfirmButton: false,
         timer: 1500
       });
-}
-//type (success, error, warning, info, question )
+}//taskCompleted
+
 function popupconfirm(type, title, message){
     Swal.fire({
         icon: type,          //     icon: "error",
         title: title,        //     title: "Oops...",
         text: message       //     text: "Something went wrong!"
       });
-}
+}   //type (success, error, warning, info, question )
 
 function cleanWarnings(){
     $alert_container.innerHTML = "";
     service_name.style.border="";
     service_description.style.border="";
     btnUploadWidget.style.border="";
-}
+}//cleanWarnings
 
 function warningAlert(lblStyled, message){
     lblStyled.style.border="solid thin red";
@@ -40,9 +37,8 @@ function warningAlert(lblStyled, message){
         </div>`;
     $alert_container.insertAdjacentHTML("beforeend",showalert);
     //$alert_container.innerHTML = showalert;
-}
+}//warningAlert
 
-//Cloudinary
 var myWidget = cloudinary.createUploadWidget({
     cloudName: 'dz4ctdoqw', 
     uploadPreset: 'my-preset'}, (error, result) => { 
@@ -51,28 +47,28 @@ var myWidget = cloudinary.createUploadWidget({
             document.getElementById("uploadedimage").setAttribute("src", result.info.secure_url);
         }
     }
-);
+);//Cloudinary Widget
 
 btnUploadWidget.addEventListener("click", function(e){
     e.preventDefault();
     myWidget.open();
-}, false);
+}, false);//Cloudinary button
 
-function validateService(service_name, service_description, uploadedimage){
-    if (service_name.value.length < 10){
+function validateService(service_name, service_description, urlImage){
+    if (service_name.value.trim().length < 10){
         console.log("nomb: "+service_name.value.length);//test
         message = "El nombre debe tener más de 10 caracteres";
         warningAlert(service_name, message);
         return false;
     }   
-    if (service_description.value.length < 20){
+    if (service_description.value.trim().length < 20){
         console.log("desc: "+service_description.value.length); //test
         message = "La descripción debe tener más de 20 caracteres";
         warningAlert(service_description, message);
         return false;
     }   
-    if(uploadedimage.getAttribute("src") == "" || uploadedimage.getAttribute("src") == imgDefault)  {   
-        console.log("img url: "+uploadedimage.getAttribute("src"));//test
+    if(urlImage == "" || urlImage == imgDefault)  {   
+        console.log("img url: "+urlImage);//test
         message = "Por favor seleccione una imagen";
         warningAlert(btnUploadWidget, message);
         return false;
@@ -86,17 +82,20 @@ btnSubmit.addEventListener("click", function(event){
     const $service_name = document.getElementById("service_name");
     const $service_description = document.getElementById("service_description");
     const $uploadedimage = document.getElementById("uploadedimage");
-    const isValid = validateService($service_name, $service_description, $uploadedimage);
+    const urlImage = $uploadedimage.getAttribute("src");
+    const isValid = validateService($service_name, $service_description, urlImage);
     
     if (isValid){
         console.log("nomb: "+$service_name.value.length);
         console.log("desc: "+$service_description.value.length);
-        console.log("img url: "+ $uploadedimage.getAttribute("src"));
+        console.log("img url: "+ urlImage);
 
         let service = `{"nombre": "${$service_name.value}",
-            "descripción": "${$service_description.value}"
-            }`; //,"imagen": "${$uploadedimage.value.secure_url}"
+            "descripción": "${$service_description.value}",
+            "urlImage": "${urlImage}"
+            }`; //
         services.push(JSON.parse(service)); //Agrega al array services el JSON de service
+        console.log(services);
         localStorage.setItem("services", JSON.stringify(services)); //Agrega al localStorage el array de servicios en String
 
         taskcompleted("Servicio registrado correctamente");
@@ -107,8 +106,6 @@ btnSubmit.addEventListener("click", function(event){
     }
 });//btnSubmit
 
-
-
 btnClear.addEventListener("click", function(event){
     event.preventDefault();
     $alert_container.innerHTML = "";
@@ -118,4 +115,4 @@ btnClear.addEventListener("click", function(event){
     service_name.style.border="";
     service_description.style.border="";
     uploadedimage.src = imgDefault;
-});
+});//btnClear
