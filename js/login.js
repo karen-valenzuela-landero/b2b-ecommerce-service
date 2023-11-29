@@ -35,7 +35,7 @@ function validateLogin(mailLogin, passLogin) {
   if(!emailRegEx.test(mailLogin.value) || mailLogin.value.trim().length < 8){
       msj_error="Por favor, verifica tu correo electrónico. El formato correcto es 'usuario@dominio.com'.";
       showErrorMessage(loginAlert,mailLogin, msj_error);
-      //return false;
+      return false;
   }
   if(!passRegEx.test(passLogin.value)){
       msj_error="La contraseña debe contener: mínimo 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial (#?!@$ %^&*-).";
@@ -54,23 +54,30 @@ btnLogin.addEventListener("click", function(event){
 
   if (isValid){
     const storedUsers = JSON.parse(localStorage.getItem("users"));
-    const user = storedUsers.find((person) => person.email == mailLogin.value);
-    console.log(typeof user, user );//
-    if(user == undefined){
+    console.log(typeof storedUsers, storedUsers );//
+    if(storedUsers == null){
       msj_error="No existe usuario registrado con este correo";
       showErrorMessage(loginAlert, mailLogin, msj_error);
       console.log("MailNotFound:", msj_error, mailLogin.value);
     } else {
-      if ( user.contraseña !== passLogin.value) {
-        msj_error="Contraseña Incorrecta";
-        showErrorMessage(loginAlert, passLogin, msj_error);
-        console.log("IncorrectPassword:", msj_error, passLogin.value);
+      const user = storedUsers.find((person) => person.email == mailLogin.value);
+      console.log(typeof user, user );//
+      if(user == undefined){
+        msj_error="No existe usuario registrado con este correo";
+        showErrorMessage(loginAlert, mailLogin, msj_error);
+        console.log("MailNotFound:", msj_error, mailLogin.value);
       } else {
-        console.log("Correcto");
-        localStorage.setItem("user", mailLogin.value);
-        localStorage.setItem("pass", passLogin.value);
-        location.href ='./gestion_servicios.html';
-      }// if pass check
-    }// if user empty
+        if ( user.contraseña !== passLogin.value) {
+          msj_error="Contraseña Incorrecta";
+          showErrorMessage(loginAlert, passLogin, msj_error);
+          console.log("IncorrectPassword:", msj_error, passLogin.value);
+        } else {
+          console.log("Correcto");
+          localStorage.setItem("user", mailLogin.value);
+          localStorage.setItem("pass", passLogin.value);
+          location.href ='./gestion_servicios.html';
+        }// if pass check
+      }// if user empty
+    }//if storedUsers null
   }// isValid
 });//btnLogin

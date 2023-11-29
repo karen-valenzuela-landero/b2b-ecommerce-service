@@ -1,4 +1,5 @@
 const submit = document.getElementById("submit");
+const clean = document.getElementById("clean");
 const $alert_container = document.getElementById("alert-container");
 const emailRegEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
 const phoneRegEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
@@ -43,7 +44,7 @@ function cleanForm(){
   contact_email.value="";
   contact_phone.value="";
   contact_message.value="";
-  contact_service.value="";
+  contact_service.value="0";
   contact_company.focus();
 }//clean Form
 
@@ -135,4 +136,9 @@ submit.addEventListener("click", function(event) {
               taskcompleted( "error", "Falla en el servidor. Inténtelo de nuevo");
           });//emailJS
     }//if is valid 
-});//addEvenListener
+});//SUBMIT addEvenListener
+
+clean.addEventListener('click', function (event) {
+  event.preventDefault();
+  cleanForm();
+});//CLEAN addEvenListener 

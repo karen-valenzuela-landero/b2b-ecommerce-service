@@ -25,6 +25,20 @@ function cleanSignupWarnings(){
   suRepPass.style.border="";
 }//cleanSignupWarnings
 
+function cleanSignUpForm(){
+    suName.value="";
+    suPhone.value="";
+    suEmail.value="";
+    suPass.value="";
+    suRepPass.value="";
+    suName.style.border="";
+    suPhone.style.border="";
+    suEmail.style.border="";
+    suPass.style.border="";
+    suRepPass.style.border="";
+    suName.focus();
+}//cleanSignUpForm
+
 function taskcompleted (message){
   Swal.fire({
       position: "top-end",
@@ -41,7 +55,7 @@ function validateSignup(name,phone,email,pass,repPw) {
     showErrorMessage(signupAlert, name, msj_error);
     return false;
   } 
-  if(!phoneRegEx.test(phone.value)  || parseInt(phone.value).toString().length != 10){
+  if(!phoneRegEx.test(phone.value) || parseInt(phone.value).toString().length != 10){
       console.log(parseInt(phone.value));  
       msj_error="Por favor, verifica tu teléfono. El formato correcto es '7866235685'.";
       showErrorMessage(signupAlert, phone, msj_error);
@@ -83,16 +97,6 @@ btnSignUp.addEventListener("click", function(event){
     localStorage.setItem("users", JSON.stringify(users));
 
     taskcompleted("Usuario registrado correctamente");
-    $name.value="";
-    $phone.value="";
-    $email.value="";
-    $pass.value="";
-    $repPw.value="";
-    $name.style.border="";
-    $phone.style.border="";
-    $email.style.border="";
-    $pass.style.border="";
-    $repPw.style.border="";
-    $name.focus();
+    cleanSignUpForm();
   }//isValid
 });//btnSignup

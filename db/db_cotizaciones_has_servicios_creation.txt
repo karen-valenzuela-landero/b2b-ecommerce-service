@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS `mydb`.`Cotizacion_has_Servicios` (
+  `Cotizacion_idCotizacion` INT NOT NULL,
+  `Servicios_idServicios` INT NOT NULL,
+  `Servicios_Usuarios_idUsuarios` INT NOT NULL,
+  PRIMARY KEY (`Cotizacion_idCotizacion`, `Servicios_idServicios`, `Servicios_Usuarios_idUsuarios`),
+  INDEX `fk_Cotizacion_has_Servicios_Servicios1_idx` (`Servicios_idServicios` ASC, `Servicios_Usuarios_idUsuarios` ASC) VISIBLE,
+  INDEX `fk_Cotizacion_has_Servicios_Cotizacion1_idx` (`Cotizacion_idCotizacion` ASC) VISIBLE,
+  CONSTRAINT `fk_Cotizacion_has_Servicios_Cotizacion1`
+    FOREIGN KEY (`Cotizacion_idCotizacion`)
+    REFERENCES `mydb`.`Cotizacion` (`idCotizacion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Cotizacion_has_Servicios_Servicios1`
+    FOREIGN KEY (`Servicios_idServicios` , `Servicios_Usuarios_idUsuarios`)
+    REFERENCES `mydb`.`Servicios` (`idServicios` , `Usuarios_idUsuarios`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
