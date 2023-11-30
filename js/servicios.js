@@ -108,7 +108,7 @@ addCard(conjuntoCard,promps8)
 const promps9 = {
     nombre: "Implementación de Software de Caja",
     urlImage: "./src/services/service09.jpg",
-    descripción: "Adaptamos software de tipo ERP y CRM a las necesidades de ttu empresa." 
+    descripción: "Adaptamos software de tipo ERP y CRM a las necesidades de tu empresa." 
 }
 addCard(conjuntoCard,promps9)
 
