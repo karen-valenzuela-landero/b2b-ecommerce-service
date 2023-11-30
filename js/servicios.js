@@ -1,10 +1,10 @@
-const conjuntoCard = document.getElementById("cards_servicios")
+const services_cards = document.getElementById("services_cards")
 const services = JSON.parse(localStorage.getItem("services"));
 
-function addCard(cards,promps){
-    const titulo = promps['nombre']
-    const img = promps['urlImage']
-    const descripcion = promps['descripción']
+function addCard(cards,service){
+    const titulo = service['nombre']
+    const img = service['urlImage']
+    const descripcion = service['descripción']
 
     const templateCard = ` 
         <div class="col">
@@ -43,80 +43,83 @@ function addCard(cards,promps){
 
     cards.innerHTML += templateCard;
 }
+if(services !== null){
+    services.forEach(service => {
+        console.log(service);
+        addCard(services_cards, service); 
+    });//services forEach
+} else {
+    console.log("No se tienen servicios en el localStorage");
+}    
 
-services.forEach(service => {
-    console.log(service);
-    addCard(conjuntoCard, service); 
-});//services forEach
-
-const promps = {
+const serv1 = {
     nombre: "Distribución de equipo de cómputo.",
     urlImage: "./src/services/service01.jpg",
     descripción: "Equipo de cómputo centralizado y descentralizado. Infraestructura de redes y accesorios periféricos."
 }
-addCard(conjuntoCard,promps)
+addCard(services_cards, serv1)
 
-const promps2 = {
+const serv2 = {
     nombre: "Distribución de licencias de software",
     urlImage: "./src/services/service02.jpg",
     descripción: "Integramos nuestras soluciones con licencias de sistema operativo nivel enterprise (Windows, RHEL). Software de diseño gráfico, arquitectónico y de ingeniería (Autodesk, Adobe)." 
 }
-addCard(conjuntoCard,promps2)
+addCard(services_cards, serv2)
 
-const promps3 = {
+const serv3 = {
     nombre: "Servicios en la nube.",
     urlImage: "./src/services/service03.jpeg",
     descripción: "Servicios en la nube (Azure, AWS, Google Cloud)." 
 }
-addCard(conjuntoCard,promps3)
+addCard(services_cards, serv3)
 
-const promps4 = {
+const serv4 = {
     nombre: "Desarrollo de Software a la medida.",
     urlImage: "./src/services/service04.jpg",
     descripción: "Utilizamos metodologías ágiles y alcanzamos un alto nivel de madurez de acuerdo con la certificación internacional CMMi DEV5." 
 }
-addCard(conjuntoCard,promps4)
+addCard(services_cards, serv4)
 
-const promps5 = {
+const serv5 = {
     nombre: "Servicios finacieros. Arrendamiento",
     urlImage: "./src/services/service05.jpeg",
     descripción: "Esta es la estrategia ideal para la renovación constante de tu infraestructura de TI y amortizar el costo financiero de la inversión inicial." 
 }
-addCard(conjuntoCard,promps5)
+addCard(services_cards, serv5)
 
-const promps6 = {
+const serv6 = {
     nombre: "Servicios administrados.",
     urlImage: "./src/services/service06.jpg",
     descripción: "Administramos y mantenemos tu red, almacenamiento de datos,seguridad informática, gestión de base de datos y soporte técnico." 
 }
-addCard(conjuntoCard,promps6)
+addCard(services_cards, serv6)
 
-const promps7 = {
+const serv7 = {
     nombre: "SLA",
     urlImage: "./src/services/service07.jpeg",
     descripción: "Ofrecemos acuerdos de nivel de servicio (SLA) que garantizan un alto rendimiento y disponibilidad de los servicios." 
 }
-addCard(conjuntoCard,promps7)
+addCard(services_cards, serv7)
 
-const promps8 = {
+const serv8 = {
     nombre: "Diseño de Arquitectura de sistemas",
     urlImage: "./src/services/service08.jpg",
     descripción: "Nos adaptamos a las necesidades y presupuesto de tu organización para planificar estratégicamente la infraestructura de IT, ya sea para cómputo centralizado o cómputo descentralizado." 
 }
-addCard(conjuntoCard,promps8)
+addCard(services_cards, serv8)
 
-const promps9 = {
+const serv9 = {
     nombre: "Implementación de Software de Caja",
     urlImage: "./src/services/service09.jpg",
     descripción: "Adaptamos software de tipo ERP y CRM a las necesidades de tu empresa." 
 }
-addCard(conjuntoCard,promps9)
+addCard(services_cards, serv9)
 
-const promps10 = {
+const serv10 = {
     nombre: "Servicios Administrativos de la OnSite",
     urlImage: "./src/services/service10.webp",
     descripción: "Junto con los servicios en la nube, le proveemos del servicio de administración de esta desde su empresa." 
 }
-addCard(conjuntoCard,promps10)
+addCard(services_cards, serv10)
 
 
