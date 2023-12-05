@@ -1,6 +1,6 @@
 # Project
 
-Project's Personal version. In this repository I'll be developing the project assigned, and for the collaborations in the common project repository, I'll take code from here and copy/paste there.
+Project's Personal version. In this repository I'll be developing the project assigned, and for the collaborations in the [common project repository](https://github.com/SandraMolko/MagicSoft/tree/develop), I'll take code from here and copy/paste there.
 
 ## Author
 
