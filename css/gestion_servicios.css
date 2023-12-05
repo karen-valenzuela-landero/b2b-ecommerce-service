@@ -2,6 +2,7 @@
 .card{
     padding: 20px;
     margin: 20px;
+    z-index: -2;
 }
 #form-container{
     display: flex;
