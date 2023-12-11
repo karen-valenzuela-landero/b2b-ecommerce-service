@@ -6,8 +6,8 @@
     <title>Registro</title>
     <link rel="icon" type="image" href="./src/logoAMR.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="./css/sign_styles.css">
-    <link rel="stylesheet" href="./css/administradores.css">
 </head>
 <body class="grid-container">
     
@@ -16,7 +16,7 @@
 
     <!--===== MAIN [HTML Implemented] =====-->
     <main class="main">
-        <div class="container">
+        <div class="container-fluid">
             <!--===== SIGN-UP [HTML Implemented] =====-->
             <section class="container" >
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -32,31 +32,31 @@
                         <form class="mx-1 mx-md-4">     
                             <!-- User Name -->
                             <div class="d-flex flex-row align-items-center mb-3">
-                                <i class="bi bi-person-fill"><img src="./src/icons/person-fill.svg" alt=""></i>
+                                <i class="fa-solid fa-user fa-lg"></i>
                                 <input type="text" id="suName" class="form-control form-control-md" placeholder="Nombre Completo" />  
                                 <!-- <label class="form-label" for="nombre">Nombre</label> -->
                             </div>
                             <!-- User Phone -->
                             <div class="d-flex flex-row align-items-center mb-3" >
-                                <i class="bi bi-telephone-fill"><img src="./src/icons/telephone-fill.svg" alt=""></i>
+                                <i class="fa-solid fa-phone fa-lg"></i>
                                 <input type="text" id="suPhone" class="form-control form-control-md" placeholder="Número Telefónico" />
                                 <!-- <label class="form-label" for="telefono">Teléfono</label> -->
                             </div>
                             <!-- User Email -->
                             <div class="d-flex flex-row align-items-center mb-3">
-                                <i class="bi bi-envelope-fill"><img src="./src/icons/envelope-fill.svg" alt=""></i>
+                                <i class="fa-solid fa-envelope fa-lg"></i>
                                 <input type="email" id="suEmail" class="form-control form-control-md" placeholder="Correo Electrónico" />
                                 <!-- <label class="form-label" for="email">Email</label> -->
                             </div>    
                             <!-- Password -->
                             <div class="d-flex flex-row align-items-center mb-3">
-                                <i class="bi bi-lock-fill"><img src="./src/icons/lock-fill.svg" alt=""></i>
+                                <i class="fa-solid fa-lock fa-lg"></i>
                                 <input type="password" id="suPass" class="form-control form-control-md" placeholder="Contraseña" autocomplete="off" />
                                     <!-- <label class="form-label" for="contraseña">Contraseña</label> -->
                             </div>
                             <!-- Repeat Password -->
-                            <div class="d-flex flex-row align-items-center mb-3">
-                                <i class="bi bi-key-fill"><img src="./src/icons/key-fill.svg" alt=""></i>
+                            <div class="d-flex flex-row justify-content-center align-items-center mb-3">
+                                <i class="fa-solid fa-key fa-lg"></i>
                                 <input type="password" id="suRepPass" class="form-control form-control-md" placeholder="Confirmar Contraseña" autocomplete="off" />
                                 <!-- <label class="form-label" for="contraseñaconf">Confirma tu contraseña</label> -->
                             </div>

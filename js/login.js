@@ -75,6 +75,7 @@ btnLogin.addEventListener("click", function(event){
           console.log("Correcto");
           localStorage.setItem("user", mailLogin.value);
           localStorage.setItem("pass", passLogin.value);
+          localStorage.setItem("nameAdm", user.nombre);
           location.href ='./gestion.html';
         }// if pass check
       }// if user empty

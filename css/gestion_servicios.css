@@ -2,7 +2,7 @@
 .card{
     padding: 20px;
     margin: 20px;
-    z-index: -2;
+    
 }
 #form-container{
     display: flex;
@@ -43,4 +43,19 @@
   } */
 
 
+#services-list{
+    padding: 40px 0;
+    max-width: 100%;
+}
+#refresh-icon{
+    text-align: right;
+}
+table{
+    /* table-layout: fixed; */
+    width: 100%;
+}
+ td {
+    overflow: hidden;
+    white-space: pre-wrap;
+  } 
 

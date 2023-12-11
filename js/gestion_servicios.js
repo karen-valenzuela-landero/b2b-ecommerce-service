@@ -116,3 +116,45 @@ btnClear.addEventListener("click", function(event){
     service_description.style.border="";
     uploadedimage.src = imgDefault;
 });//btnClear
+
+function loadServices(servicerow){
+    console.log("TEST: Entra al loadServices JS");
+    let servicios;
+    const URL_MAIN='/api/servicios/'; 
+    fetch(URL_MAIN,{
+        method:'get'
+        }).then( function(response){
+        response.json()
+        .then(function (res){
+            console.log("TEST: En fetch");
+            console.log(res);
+            console.log(res.length);
+            servicios=res;
+            localStorage.setItem("total_services", res.length);
+            Array.from(res).forEach((p,index)=>{
+                servicerow.innerHTML += ` 
+                <tr>
+                    <th class"rowId" scope="row">${p.id}</th>
+                    <td class="rowName">${p.nombre}</td>
+                    <td class="rowDesc">${p.descripcion}</td>
+                    <td class="rowImg">${p.imagen}</td>
+                </tr>`;
+            }); //for each
+        }); //then
+        }).catch(function(error){
+            console.log("Problema en el JSON", error)
+    });
+        console.log(document.getElementById("cards_servicios"));      
+}//loadServices
+
+window.addEventListener("load", function(){
+    let servicerow = document.getElementById("services-table");
+    loadServices(servicerow); 
+});//onLoad
+
+let refresh = document.getElementById("refresh-icon");
+refresh.addEventListener("click", function(event){
+    event.preventDefault();
+    let servicerow = document.getElementById("services-table");
+    loadServices(servicerow); 
+});//btnRefresh

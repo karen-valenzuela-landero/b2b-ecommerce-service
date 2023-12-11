@@ -43,13 +43,13 @@
                                 <!-- Service Name-->
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <!-- <label class="col-md-4 control-label" for="service_name">Nombre Servicio</label>   -->
-                                    <i class="bi bi-gear-fill"><img src="./src/icons/gear-fill.svg" alt="" srcset=""></i>
+                                    <i class="fa-solid fa-gear" style="color: #294bf3;"></i>
                                     <input id="service_name" name="service_name" placeholder="Nombre del Servicio" class="form-control input-md" required type="text">
                                 </div>
                                 <!-- Service Description -->
                                 <div class="d-flex flex-row mb-4">
                                     <!-- <label class="col-md-4 control-label" for="service_description">Descripción Servicio</label> -->
-                                    <i class="bi bi-card-checklist pt-2"><img src="./src/icons/card-checklist.svg" alt="" srcset=""></i>
+                                    <i class="fa-regular fa-rectangle-list" style="color: #294bf3;"></i>
                                     <textarea id="service_description" name="service_description" placeholder="Descripción del Servicio" class="form-control input-md" required type="textarea" ></textarea>
                                 </div>
                                 <!-- Buttons -->
@@ -67,6 +67,27 @@
                         </div>
                     </form>
                 </div>
+        </section>
+
+        <section id="services-list" class="container" >
+            <!-- Form Name -->
+            <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-4 mt-4">Servicios Agregados</p>
+            <!-- List Start -->
+            <div id="list-container" class="container-fluid">
+                <table class="table table-striped table-hover caption-top">
+                    <caption id="refresh-icon"><i class="fa-solid fa-rotate " style="color: #294bf3;"></i></caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Url de Imagen</th>
+                      </tr>
+                    </thead>
+                    <tbody id="services-table" class="table-group-divider">                      
+                    </tbody>
+                  </table>
+            </div>
         </section>
     </main>
 

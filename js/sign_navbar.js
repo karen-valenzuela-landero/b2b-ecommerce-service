@@ -1,41 +1,59 @@
 function createNavbar (){
     let navbar = document.getElementById("navbar");
     let navigation = `
-        <div id="navbar-container" class="container">
-            <div id="brand">
-                <a href="./index.html">
-                    <img src="./src/logoAMR.png" alt="Logo AMR" class="navbar-brand">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div id="navbar-container" class="container-fluid">
+                <a class="navbar-brand" href="./login.html">
+                    <img src="./src/logoAMR.png" alt="Logo AMR">
                 </a>
-                <p hidden>Soluciones Integrales AMR</p>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html">
+                                    <i class="fa-solid fa-house" style="color: #294bf3;"></i>
+                                    Ir a Página Principal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./login.html">
+                                    <i class="fa-solid fa-right-to-bracket" style="color: #294bf3;"></i>
+                                    Iniciar Sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./registro.html">
+                                    <i class="fa-solid fa-user-plus" style="color: #294bf3;"></i>
+                                    Registrarse</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <a href="./index.html" id="logout" class="nav-link"></a>
-        </div>    
+        </nav>    
         `;
     navbar.insertAdjacentHTML("afterbegin",navigation);
 }
-
 createNavbar();
 
-const userLogged = localStorage.getItem("user");
-const $logout = document.getElementById("logout");
+document.querySelectorAll(".nav-link").forEach((link) => {
+    if (link.href === window.location.href) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+    }
+});//nav-link active
+
+/* const userLogged = localStorage.getItem("user");
 window.addEventListener("load", function(event){  
     if(userLogged == "" || userLogged==null){
-        let backHome = `Regresar a Inicio`;
-        $logout.insertAdjacentHTML("beforeend",backHome);
+        location.href ='./login.html';
     }else{
-        let logout = `<i class="bi bi-box-arrow-right">
-            <img src="./src/icons/box-arrow-right.svg" alt="Logout">
-            </i>`;
-        $logout.insertAdjacentHTML("beforeend",logout);
+        location.href ='./gestion.html';
     }
-});//set icon logout
+});//validate logged */
 
-$logout.addEventListener("click", function(event){  
-    if(userLogged == "" || userLogged==null){
-        location.href ='./index.html';
-    }else{
-        localStorage.setItem("user", "");
-        localStorage.setItem("pass", "");
-        location.href ='./index.html';
-    }
-});//logout

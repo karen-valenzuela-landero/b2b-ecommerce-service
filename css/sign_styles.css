@@ -1,3 +1,13 @@
+/**
+ * =====STYLES FOR:
+        login.html  registro.html
+    ---------------------------------
+        Grid Style
+        - Navbar
+        - Main
+        - Footer
+        Animations
+        Media Breakpoints   =====*/
 *{
     box-sizing: border-box;
     padding: 0;
@@ -8,61 +18,66 @@ html{
 }
 body{
     min-height: 100%;
+}
+.grid-container > *{
+    padding: 0;
     margin: 0;
 }
-
-.grid-container > *{
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
+/**=====NAVBAR=====*/
 .navbar{
     grid-area: navbar;
     position: fixed;
     top: 0;
     width: 100%;
+    height: fit-content;
+    color: #eee;
     text-decoration: none;
     background-image: url(../src/magicsoft-bg.png);
-    height: fit-content;
-    justify-content: space-between;
-    color: #eee;
 }
-.navbar-brand {
+.navbar-brand img{
     border-radius: 15%;
     margin: 5px;
-    margin-left: 15px;
     width: 55px;
     height: 55px;
-    animation: rotateY 5s linear infinite; /* Aplica la animación 'rotateY' */
+    animation: rotateY 5s linear infinite; 
 }
 .nav-link:hover{
     text-shadow: #294BF3 1px 0 10px;
 }
-#brand{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#brand p{
-    margin: 0;
-    font-size: 1.3em;
-}
-#navbar-container img {
-    width: 70px;
-    height: 70px;
-    border-radius: 15%; 
-}
-#logout img{
-    background-color: #294BF3;
-    border-radius: 0;
-    padding: 10px;
-    margin: 10px;
-}
+/**=====MAIN=====*/
 .main{
     grid-area: main;
     width: 100%;
     height: fit-content;
+    padding: 0;
+    margin: 0;
 }
-
+    section{
+        padding: 10px 20px 40px;
+    }
+    form div{
+        margin: 0;
+    }
+    i{
+        padding-right: 10px;
+        margin: auto 0;
+    }
+    #rememberme-forgotPass{ /*only in login*/
+        display:none;
+        visibility: hidden;
+    }
+/**=====FOOTER=====*/
+#copyright{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #0D6EFD;
+}
+/**=====ANIMATIONS=====*/
 @keyframes rotateY {
     0%, 100% {
         transform: perspective(400px) rotateY(0deg);
@@ -71,8 +86,7 @@ body{
         transform: perspective(400px) rotateY(180deg);
     }
 }
-
-
+/**=====MEDIA BREAKPOINTS=====*/
 /*Mobile*/
 @media(min-width:320px){
     .grid-container{
@@ -82,12 +96,6 @@ body{
         grid-template-areas:
         "navbar"
         "main";
-    }
-    .main{
-        padding: 10px 0 0;
-    }
-    .navbar{
-        position: relative;
     }
 }
 /*Tablet*/
@@ -99,12 +107,6 @@ body{
         "navbar navbar"
         "main main";
     }
-    .main{
-        padding: 10px 0 0;
-    }
-    .navbar{
-        position: relative;
-    }
 }
 /*Desktop*/
 @media(min-width:900px){
@@ -115,5 +117,11 @@ body{
         grid-template-areas: 
         "navbar navbar navbar"
         "main main main";
+    }
+}
+@media only screen and (max-width: 768px) {
+    #copyright{
+        position: relative;
+        bottom: 0;
     }
 }

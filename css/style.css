@@ -1,42 +1,66 @@
+/**
+ * =====STYLES FOR:
+        index.html  nosotros.html   portafolio.html
+        blog.html servicios.html  contacto.html
+    ---------------------------------
+        Grid Style
+        - Navbar
+        - Header
+        - Main
+        - Footer
+        Animations
+        Media Breakpoints   =====*/
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
-body{
-    min-height: 100%;
-}
 html{
     height: 100%;
 }
-.grid-container > *{
-    padding-top: 0px;
-    padding-bottom: 0px;
+body{
+    min-height: 100%;
 }
+.grid-container > *{
+    padding: 0;
+    margin: 0;
+}
+/**=====NAVBAR=====*/
 .navbar{
     grid-area: navbar;
-    /* background-image: url(https://wallpaperaccess.com/full/2195741.jpg); */
-    background-image: url(../src/magicsoft-bg.png);
+    top: 0;
+    width: 100%;
     height: fit-content;
     font-size: x-large;
+    color: #eee;
+    text-decoration: none;
+    background-image: url(../src/magicsoft-bg.png);
 }
 .navbar-brand img {
     border-radius: 15%; 
+    margin: 5px;
+    width: 55px;
+    height: 55px;
+    animation: rotateY 5s linear infinite;
 }
-.navbar.navbar-expand-lg.navbar-dark{
+.nav-link:hover{
+    text-shadow: #294BF3 2px 0 10px;
+}
+/* .navbar.navbar-expand-lg.navbar-dark{
     width: 100%;
     height: fit-content;
     padding:  0 20px;
-  }
+  } */
   .collapse.navbar-collapse{
     justify-content: flex-end;
   }
-
+/**=====HEADER=====*/
 .header{
     grid-area: header;
     width: 100%;
     height: fit-content;
 }
+/**=====MAIN=====*/
 .main{
     grid-area: main;
     display: grid;
@@ -46,35 +70,47 @@ html{
     align-items: center;
     font-family: inherit;
 }
+/**=====FOOTER=====*/
 .footer{
     grid-area: footer;
-    background-color: #294BF3;
-    /* background-image: url(https://wallpaperaccess.com/full/2195741.jpg); */
-    background-image: url(../src/magicsoft-bg.png);
+    width: 100%;
     height: fit-content;
     padding: 40px 0; 
+    background-color: #294BF3;
+    background-image: url(../src/magicsoft-bg.png);
 }
+/**=====ANIMATIONS=====*/
+@keyframes rotateY {
+    0%, 100% {
+        transform: perspective(400px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(400px) rotateY(180deg);
+    }
+}
+/**=====MEDIA BREAKPOINTS=====*/
 /*Mobile*/
-.grid-container{
-    display: grid;
-    gap: 0px;
-    grid-template-areas:
-    "navbar"
-    "header"
-    "main"
-    "sidebar"
-    "footer" ;
+@media(min-width:320px){
+    .grid-container{
+        display: grid;
+        gap: 0px;
+        grid-template-rows: 91px auto;
+        grid-template-areas:
+        "navbar"
+        "header"
+        "main"
+        "footer" ;
+    }
 }
 /*Tablet*/
 @media(min-width:768px){
     .grid-container{
         grid-template-columns: auto ;
-        grid-template-rows: auto;
+        grid-template-rows: 91px auto;
         grid-template-areas: 
         "navbar navbar"
         "header header"
         "main main"
-        "sidebar sidebar"
         "footer footer";
     }
 }
@@ -83,12 +119,11 @@ html{
     .grid-container{
         grid-template-columns: auto ;
         /* grid-template-rows: 100px 50px auto 100px; */
-        grid-template-rows: auto;
+        grid-template-rows: 91px auto;
         grid-template-areas: 
         "navbar navbar navbar"
         "header header header"
         "main main main"
-        "sidebar sidebar sidebar"
         "footer footer footer";
     }
 }

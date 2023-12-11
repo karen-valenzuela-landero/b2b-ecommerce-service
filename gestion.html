@@ -21,7 +21,7 @@
             <h1>Dashboard</h1>
         </hgroup>
 
-        <div id="indicators" class="container">
+        <div id="indicators" class="row">
             <div id="numServices" class="card text-bg-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header">Servicios Registrados</div>
                 <div class="card-body">
@@ -30,6 +30,16 @@
                     <i class="fa-solid fa-bell-concierge fa-xl" style="color: #e1e4ea;"></i>
                   </p>
                 </div>
+            </div>
+
+            <div id="numCotizaciones" class="card text-bg-primary mb-3" style="max-width: 18rem;">
+              <div class="card-header">Cotizaciones Recibidas</div>
+              <div class="card-body">
+                <h3 id="dataCotizaciones" class="card-title"></h3>
+                <p class="card-text">
+                  <i class="fa-solid fa-money-check fa-xl" style="color: #e1e4ea;"></i>
+                </p>
+              </div>
             </div>
 
             <div id="numUsers" class="card text-bg-primary mb-3" style="max-width: 18rem;">
