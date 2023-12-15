@@ -91,10 +91,12 @@ btnSignUp.addEventListener("click", function(event){
   const isValid = validateSignup($name,$phone,$email,$pass,$repPw);
   
   if (isValid){
+    const users = JSON.parse(localStorage.getItem("users"));
     let newUser = `{"nombre": "${$name.value}","teléfono": "${$phone.value}",
       "email": "${$email.value}", "contraseña": "${$pass.value}"}`;
-    users.push(JSON.parse(newUser));
-    localStorage.setItem("users", JSON.stringify(users));
+
+    users.push(JSON.parse(newUser));//TODO: CHANGE to Fetch method POST
+    localStorage.setItem("users", JSON.stringify(users));//TODO: CHANGE to Fetch method POST
 
     taskcompleted("Usuario registrado correctamente");
     cleanSignUpForm();

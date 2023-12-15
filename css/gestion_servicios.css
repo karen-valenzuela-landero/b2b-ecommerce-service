@@ -45,13 +45,13 @@
 
 #services-list{
     padding: 40px 0;
-    max-width: 100%;
+    width: 100%;
 }
 #refresh-icon{
     text-align: right;
 }
 table{
-    /* table-layout: fixed; */
+    table-layout: fixed; 
     width: 100%;
 }
  td {

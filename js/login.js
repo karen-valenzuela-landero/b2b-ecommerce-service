@@ -53,15 +53,14 @@ btnLogin.addEventListener("click", function(event){
   const isValid = validateLogin(mailLogin, passLogin);
 
   if (isValid){
-    const storedUsers = JSON.parse(localStorage.getItem("users"));
-    console.log(typeof storedUsers, storedUsers );//
+    const storedUsers = JSON.parse(localStorage.getItem("users"));//TODO: Delete when Fetch'll be implemented
     if(storedUsers == null){
       msj_error="No existe usuario registrado con este correo";
       showErrorMessage(loginAlert, mailLogin, msj_error);
       console.log("MailNotFound:", msj_error, mailLogin.value);
     } else {
-      const user = storedUsers.find((person) => person.email == mailLogin.value);
-      console.log(typeof user, user );//
+      const user = storedUsers.find((person) => person.email == mailLogin.value);//TODO: Delete when Fetch'll be implemented
+      console.log(user);//TODO: Delete when Fetch'll be implemented
       if(user == undefined){
         msj_error="No existe usuario registrado con este correo";
         showErrorMessage(loginAlert, mailLogin, msj_error);
@@ -72,10 +71,8 @@ btnLogin.addEventListener("click", function(event){
           showErrorMessage(loginAlert, passLogin, msj_error);
           console.log("IncorrectPassword:", msj_error, passLogin.value);
         } else {
-          console.log("Correcto");
-          localStorage.setItem("user", mailLogin.value);
-          localStorage.setItem("pass", passLogin.value);
-          localStorage.setItem("nameAdm", user.nombre);
+          console.log("Correcto. Usuario logueado.");
+          localStorage.setItem("user", JSON.stringify(user));//TODO: Delete when Fetch'll be implemented
           location.href ='./gestion.html';
         }// if pass check
       }// if user empty

@@ -1,16 +1,7 @@
-const storedUsers = JSON.parse(localStorage.getItem("users"));
-const userMail = localStorage.getItem("user");
-console.log(userMail);
+const user = JSON.parse(localStorage.getItem("user"));
 
-if(storedUsers !== null){
-    const user = storedUsers.find((person) => person.email == userMail);
-    console.log(user);//
-    insertNumServices(user)
-} else {
-    console.log("No se tienen usuarios en el localStorage");
-}
-
-function insertNumServices(user){
+window.addEventListener("load", function(){
+    
     let nameAdmin = document.getElementById("userName")
     let phone = document.getElementById("phone");
     let email = document.getElementById("email");
@@ -18,7 +9,7 @@ function insertNumServices(user){
 
     nameAdmin.innerHTML = user['nombre'];
     
-    let inputHTMLPhone = `<input class="form-control" type="text" name="phoneInput" id="phoneInput" value="${user['telefono']}" autocomplete="off" readonly>`
+    let inputHTMLPhone = `<input class="form-control" type="text" name="phoneInput" id="phoneInput" value="${user['teléfono']}" autocomplete="off" readonly>`
     phone.innerHTML += inputHTMLPhone;
     
     let inputHTMLEmail = `<input class="form-control" type="text" name="emailInput" id="emailInput" value="${user['email']}" autocomplete="off" readonly>`
@@ -26,4 +17,5 @@ function insertNumServices(user){
     
     let inputHTMLPass = `<input class="form-control" type="password" name="passInput" id="passInput" value="${user['contraseña']}" autocomplete="off" readonly>`
     pass.innerHTML += inputHTMLPass;
-}
+});//onLoad
+

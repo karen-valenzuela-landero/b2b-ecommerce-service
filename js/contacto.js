@@ -4,6 +4,7 @@ const $alert_container = document.getElementById("alert-container");
 const emailRegEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
 const phoneRegEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
 let message;
+const cotiz = new Array();
 
 function taskcompleted (stateMail, message){
   Swal.fire({
@@ -60,13 +61,13 @@ function showErrorMessage (lblError, msj_error){
 
 function validateContact(contact_name, contact_company, contact_email, contact_phone, contact_message, service_value){
   
-  console.log(`${contact_name.value} length:${contact_name.value.length} es tipo ${typeof(contact_name.value)}, 
+  /* console.log(`${contact_name.value} length:${contact_name.value.length} es tipo ${typeof(contact_name.value)}, 
   ${contact_company.value} length:${contact_company.value.length} es tipo ${typeof(contact_company.value)}, 
   ${contact_email.value} length:${contact_email.value.length} es tipo ${typeof(contact_email.value)},
   ${contact_phone.value} length:${contact_phone.value.toString().length} es tipo ${typeof(parseInt(contact_phone.value))},
   ${service_value} length:${service_value.length} es tipo ${typeof(service_value)},
   ${contact_message.value} length:${contact_message.value.length} es tipo ${typeof(contact_message.value)} `);
-
+ */
   if (contact_company.value.trim().length < 10) {
     message="La Razón Social debe tener más de 10 caracteres";
     showErrorMessage(contact_company, message);
@@ -79,7 +80,7 @@ function validateContact(contact_name, contact_company, contact_email, contact_p
   }
   // if(isNaN(parseInt(contact_phone.value)) || parseInt(contact_phone.value).length != 10) {
   if (!phoneRegEx.test(contact_phone.value) || parseInt(contact_phone.value).toString().length != 10){
-    console.log(parseInt(contact_phone.value), contact_phone.value.length);
+    //console.log(parseInt(contact_phone.value), contact_phone.value.length);
     message = "Por favor, verifica tu teléfono. El formato correcto es '7866235685'.";
     showErrorMessage(contact_phone, message);
     return false;
@@ -116,8 +117,14 @@ submit.addEventListener("click", function(event) {
     const contact_service = document.getElementById("contact_service"); 
     const service_value = contact_service.options[contact_service.selectedIndex].value;
     const service_text = contact_service.options[contact_service.selectedIndex].text;
-    console.log(service_value,service_text );//
+    //console.log(service_value,service_text );//
     const isValid = validateContact(contact_name, contact_company, contact_email, contact_phone, contact_message, service_value);
+
+    let company = contact_company.value;
+    let nombre = contact_name.value;
+    let phone = contact_phone.value;
+    let email = contact_email.value;
+    let message = contact_message.value;
 
     if(isValid){
 
@@ -131,6 +138,9 @@ submit.addEventListener("click", function(event) {
               console.log('SUCCESS!');
               taskcompleted( "success", "Cotización enviada correctamente");
               cleanForm();
+
+              addContizToLocalStorage(nombre, company, email, phone, message, service_value);
+
           }, function(error) {
               console.log('FAILED...', error);
               taskcompleted( "error", "Falla en el servidor. Inténtelo de nuevo");
@@ -138,7 +148,18 @@ submit.addEventListener("click", function(event) {
     }//if is valid 
 });//SUBMIT addEvenListener
 
-clean.addEventListener('click', function (event) {
+
+function addContizToLocalStorage(contact_name, contact_company, contact_email, contact_phone, contact_message, service_value){
+    const cotiz = JSON.parse(localStorage.getItem("cotiz"));
+    let newCotiz = `{"empresa": "${contact_company}","nombre": "${contact_name}",
+      "email": "${contact_email}", "telefono": "${contact_phone}", "mensaje": "${contact_message}",
+      "servicio": "${service_value}"}`;
+
+    cotiz.push(JSON.parse(newCotiz));//TODO: CHANGE to Fetch method POST
+    localStorage.setItem("cotiz", JSON.stringify(cotiz));//TODO: CHANGE to Fetch method POST
+}
+
+/* clean.addEventListener('click', function (event) {
   event.preventDefault();
   cleanForm();
-});//CLEAN addEvenListener 
+});//CLEAN addEvenListener  */

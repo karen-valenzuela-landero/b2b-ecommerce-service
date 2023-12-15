@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="icon" type="image" href="./src/logoAMR.png">
+    <link rel="icon" type="image" href="./src/free-logo-space.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="./css/gestion_styles.css">
@@ -52,6 +52,29 @@
                 </div>
             </div>
         </div>
+
+        <section id="cotiz-list" class="container" >
+          <!-- Form Name -->
+          <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-4 mt-4">Cotizaciones Recibidas</p>
+          <!-- List Start -->
+          <div id="list-container" class="container-fluid">
+              <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Empresa</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Teléfono</th>
+                      <th scope="col">Mensaje</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cotiz-table" class="table-group-divider">                      
+                  </tbody>
+                </table>
+          </div>
+      </section>
+      
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

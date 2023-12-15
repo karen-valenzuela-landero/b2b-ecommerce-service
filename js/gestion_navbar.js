@@ -1,10 +1,12 @@
-function createNavbar (){
+const userLogged = JSON.parse(localStorage.getItem("user"));
+
+window.addEventListener("load", function(){  
     let navbar = document.getElementById("navbar");
     let navigation = `
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <div id="navbar-container" class="container-fluid">
             <a class="navbar-brand" href="./gestion.html">
-              <img src="./src/logoAMR.png" alt="Logo AMR">
+              <img src="./src/free-logo-space.jpg" alt="Logo AMR">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" 
             data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" 
@@ -13,7 +15,7 @@ function createNavbar (){
             </button>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Bienvenido</h5>
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Bienvenido ${userLogged['nombre']}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
@@ -55,42 +57,12 @@ function createNavbar (){
       </nav>  
       `;
     navbar.insertAdjacentHTML("afterbegin",navigation);
-}
-createNavbar();
-
-const userLogged = localStorage.getItem("user");
-window.addEventListener("load", function(event){  
-    if(userLogged == "" || userLogged==null){
-        location.href ='./index.html';
-        Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "Usuario sin sesión. Regresando al Home.",
-            showConfirmButton: false,
-            timer: 1500
-          });
-    }else{
-        console.log("Usuario ", userLogged, " con sesión activa.");
-        const nameAdm = localStorage.getItem("nameAdm");
-		    createNavbar(nameAdm);
-    }
-});//validate user active
-
-const $logout = document.getElementById("logout");
-$logout.addEventListener("click", function(event){  
-    if(userLogged == "" || userLogged==null){
-        location.href ='./index.html';
-    }else{
+    
+    var logout = document.getElementById("logout");
+    logout.addEventListener("click", function(event){  
+        event.preventDefault();
         localStorage.setItem("user", "");
-        localStorage.setItem("pass", "");
-        localStorage.setItem("nameAdm", "");
         location.href ='./index.html';
-    }
-});//logout
+    });//logout
 
-document.querySelectorAll(".nav-link").forEach((link) => {
-  if (link.href === window.location.href) {
-      link.classList.add("active");
-      link.setAttribute("aria-current", "page");
-  }
-});//nav-link active
+});//load Navbar

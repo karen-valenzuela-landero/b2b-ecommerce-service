@@ -1,51 +1,64 @@
-const totalServices = localStorage.getItem("total_services");
+const services = JSON.parse(localStorage.getItem("services"));
 const dataServices = document.getElementById("dataServices");
-if (totalServices == null) {
+if (services == null) {
     console.log("No hay servicios registrados en localstorage");
     var total = "0";
     insertNumServices(total);
 }else{
-	console.log("total de servicios: ",totalServices);
-    insertNumServices(totalServices);
+    insertNumServices(services.length);
 }
 function insertNumServices(totalServices){
-    console.log("insertando:",totalServices);
     const numServices = ` ${totalServices} `;
     dataServices.innerHTML = numServices;
 }
 
 
-const totalAdmins = localStorage.getItem("total_admins");
+const users = JSON.parse(localStorage.getItem("users"));
 const dataUsers = document.getElementById("dataUsers");
-if (totalAdmins == null) {
+if (users == null) {
     console.log("No hay usuarios registrados en localstorage");
     var total = "0";
     insertNumUsers(total);
 }else{
-	console.log("total de servicios: ",totalAdmins);
-    insertNumUsers(totalAdmins);
+    insertNumUsers(users.length);
 }
 function insertNumUsers(totalAdmins){
-	console.log("insertando:",totalAdmins);
     const numUsers = ` ${totalAdmins} `;
     dataUsers.innerHTML = numUsers;
 }
 
 
-
-
-const totalCotiz = localStorage.getItem("total_cotizaciones");
+const cotiz = JSON.parse(localStorage.getItem("cotiz"));
 const dataCotiz = document.getElementById("dataCotizaciones");
-if (totalCotiz == null) {
-    console.log("No hay cotizaciones registrados en la bd");
+if (cotiz == null) {
+    console.log("No hay cotizaciones registrados en localStorage");
     var total = "0";
     insertNumCotiz(total);
 }else{
-	console.log("total de cotizaciones: ",totalCotiz);
-    insertNumCotiz(totalCotiz);
+    insertNumCotiz(cotiz.length);
 }
 function insertNumCotiz(totalCotiz){
-	console.log("insertando:",totalCotiz);
     const numCotiz = ` ${totalCotiz} `;
     dataCotiz.innerHTML = numCotiz;
 }
+
+
+window.addEventListener("load",  function(){
+    let cotizrow = document.getElementById("cotiz-table");
+    let id = 0;
+    if (cotiz != null) {
+        cotiz.forEach(p => {
+            id= id + 1;
+            cotizrow.innerHTML += ` 
+            <tr>
+                <th class"rowId" scope="row">${id}</th>
+                <td >${p.empresa}</td>
+                <td >${p.nombre}</td>
+                <td >${p.email}</td>
+                <td >${p.telefono}</td>
+                <td >${p.mensaje}</td>
+            </tr>`;
+        });
+    }      
+    
+});//onLoad

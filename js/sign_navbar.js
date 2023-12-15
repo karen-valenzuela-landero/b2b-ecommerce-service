@@ -4,7 +4,7 @@ function createNavbar (){
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div id="navbar-container" class="container-fluid">
                 <a class="navbar-brand" href="./login.html">
-                    <img src="./src/logoAMR.png" alt="Logo AMR">
+                    <img src="./src/free-logo-space.jpg" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

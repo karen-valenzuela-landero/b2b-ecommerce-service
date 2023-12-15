@@ -4,7 +4,7 @@ function createNavbar (){
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
     <div id="navbar-container" class="container-fluid">
         <a class="navbar-brand" href="./index.html">
-            <img src="./src/logoAMR.png" alt="Logo AMR">
+            <img src="./src/free-logo-space.jpg" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#navbarCollapse" aria-controls="navbarCollapse" 

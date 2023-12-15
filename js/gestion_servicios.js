@@ -56,19 +56,16 @@ btnUploadWidget.addEventListener("click", function(e){
 
 function validateService(service_name, service_description, urlImage){
     if (service_name.value.trim().length < 10){
-        console.log("nomb: "+service_name.value.length);//test
         message = "El nombre debe tener más de 10 caracteres";
         warningAlert(service_name, message);
         return false;
     }   
     if (service_description.value.trim().length < 20){
-        console.log("desc: "+service_description.value.length); //test
         message = "La descripción debe tener más de 20 caracteres";
         warningAlert(service_description, message);
         return false;
     }   
     if(urlImage == "" || urlImage == imgDefault)  {   
-        console.log("img url: "+urlImage);//test
         message = "Por favor seleccione una imagen";
         warningAlert(btnUploadWidget, message);
         return false;
@@ -86,16 +83,16 @@ btnSubmit.addEventListener("click", function(event){
     const isValid = validateService($service_name, $service_description, urlImage);
     
     if (isValid){
-        console.log("nomb: "+$service_name.value.length);
+        /* console.log("nomb: "+$service_name.value.length);
         console.log("desc: "+$service_description.value.length);
-        console.log("img url: "+ urlImage);
+        console.log("img url: "+ urlImage); */
 
+        const services = JSON.parse(localStorage.getItem("services"));
         let service = `{"nombre": "${$service_name.value}",
             "descripción": "${$service_description.value}",
             "urlImage": "${urlImage}"
             }`; //
         services.push(JSON.parse(service)); //Agrega al array services el JSON de service
-        console.log(services);
         localStorage.setItem("services", JSON.stringify(services)); //Agrega al localStorage el array de servicios en String
 
         taskcompleted("Servicio registrado correctamente");
@@ -117,44 +114,30 @@ btnClear.addEventListener("click", function(event){
     uploadedimage.src = imgDefault;
 });//btnClear
 
-function loadServices(servicerow){
-    console.log("TEST: Entra al loadServices JS");
-    let servicios;
-    const URL_MAIN='/api/servicios/'; 
-    fetch(URL_MAIN,{
-        method:'get'
-        }).then( function(response){
-        response.json()
-        .then(function (res){
-            console.log("TEST: En fetch");
-            console.log(res);
-            console.log(res.length);
-            servicios=res;
-            localStorage.setItem("total_services", res.length);
-            Array.from(res).forEach((p,index)=>{
-                servicerow.innerHTML += ` 
-                <tr>
-                    <th class"rowId" scope="row">${p.id}</th>
-                    <td class="rowName">${p.nombre}</td>
-                    <td class="rowDesc">${p.descripcion}</td>
-                    <td class="rowImg">${p.imagen}</td>
-                </tr>`;
-            }); //for each
-        }); //then
-        }).catch(function(error){
-            console.log("Problema en el JSON", error)
-    });
-        console.log(document.getElementById("cards_servicios"));      
-}//loadServices
-
+let serv = JSON.parse(localStorage.getItem("services"));
 window.addEventListener("load", function(){
     let servicerow = document.getElementById("services-table");
-    loadServices(servicerow); 
-});//onLoad
+    let id = 0;
+    if (serv != null) {
+        serv.forEach(p => {
+            id= id + 1;
+            servicerow.innerHTML += ` 
+                <tr>
+                    <th class"rowId" scope="row">${id}</th>
+                    <td class="rowName">${p.nombre}</td>
+                    <td class="rowDesc">${p.descripción}</td>
+                    <td class="rowImg">${p.urlImage}</td>
+                </tr>`;
+        });
+    }
+    
+       
 
-let refresh = document.getElementById("refresh-icon");
+});//onLoad Services
+
+/* let refresh = document.getElementById("refresh-icon");
 refresh.addEventListener("click", function(event){
     event.preventDefault();
     let servicerow = document.getElementById("services-table");
     loadServices(servicerow); 
-});//btnRefresh
+});//btnRefresh */
