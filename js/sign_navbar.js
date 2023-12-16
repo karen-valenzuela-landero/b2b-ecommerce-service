@@ -1,4 +1,4 @@
-function createNavbar (){
+window.addEventListener("load", function(){  
     let navbar = document.getElementById("navbar");
     let navigation = `
         <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -38,22 +38,12 @@ function createNavbar (){
         </nav>    
         `;
     navbar.insertAdjacentHTML("afterbegin",navigation);
-}
-createNavbar();
 
-document.querySelectorAll(".nav-link").forEach((link) => {
-    if (link.href === window.location.href) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "page");
-    }
-});//nav-link active
+    document.querySelectorAll(".nav-link").forEach((link) => {
+        if (link.href === window.location.href) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
+    });//nav-link active
 
-/* const userLogged = localStorage.getItem("user");
-window.addEventListener("load", function(event){  
-    if(userLogged == "" || userLogged==null){
-        location.href ='./login.html';
-    }else{
-        location.href ='./gestion.html';
-    }
-});//validate logged */
-
+});//load Navbar

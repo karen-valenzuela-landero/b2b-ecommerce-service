@@ -1,4 +1,4 @@
-function createNavbar (){
+window.addEventListener("load", function(){ 
     let navbar = document.getElementById("navbar");
     let navigation = `
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
@@ -17,19 +17,19 @@ function createNavbar (){
                     <a class="nav-link" href="./index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./nosotros.html">Nosotros</a>
+                    <a class="nav-link" href="./us.html">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./servicios.html">Servicios</a>
+                    <a class="nav-link" href="./services.html">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./portafolio.html">Portafolio</a>
+                    <a class="nav-link" href="./portfolio.html">Portafolio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./blog.html">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./contacto.html">Contáctanos</a>
+                    <a class="nav-link" href="./contact.html">Contáctanos</a>
                 </li>
             </ul>
         </div>
@@ -37,12 +37,13 @@ function createNavbar (){
     </nav>   
     `;
     navbar.insertAdjacentHTML("afterbegin",navigation);
-}
-createNavbar();
 
-document.querySelectorAll(".nav-link").forEach((link) => {
-    if (link.href === window.location.href) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "page");
-    }
-  });//nav-link active
+    document.querySelectorAll(".nav-link").forEach((link) => {
+        if (link.href === window.location.href) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
+    });//nav-link active
+
+});//load Navbar
+

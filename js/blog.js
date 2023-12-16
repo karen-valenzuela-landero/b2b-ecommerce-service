@@ -1,9 +1,6 @@
-//News API 
-//Your API key is: 3757c1f8012a40c09a18beb3267259fa
-
 const containerPosts = document.getElementById("posts-container");
 //const optionsContainer = document.querySelector(".options-container");
-const country = "mx";
+const country = "us";
 const options = [
   "technology"
 ];
@@ -17,7 +14,7 @@ const generateUI = (articles) => {
     let card = document.createElement("div");
     card.classList.add("news-card");
     card.innerHTML = `<div class="news-image-container">
-    <img src="${item.urlToImage || "./src/newspaper.jpg"}" alt="" />
+    <img src="${item.urlToImage || "./src/blog/newspaper.jpg"}" alt="" />
     </div>
     <div class="news-content">
       <div class="news-title">

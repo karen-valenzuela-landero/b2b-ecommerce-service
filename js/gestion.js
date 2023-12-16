@@ -28,37 +28,36 @@ function insertNumUsers(totalAdmins){
 }
 
 
-const cotiz = JSON.parse(localStorage.getItem("cotiz"));
+const rates = JSON.parse(localStorage.getItem("cotiz"));
 const dataCotiz = document.getElementById("dataCotizaciones");
-if (cotiz == null) {
+if (rates == null) {
     console.log("No hay cotizaciones registrados en localStorage");
     var total = "0";
     insertNumCotiz(total);
 }else{
-    insertNumCotiz(cotiz.length);
+    insertNumCotiz(rates.length);
 }
-function insertNumCotiz(totalCotiz){
-    const numCotiz = ` ${totalCotiz} `;
-    dataCotiz.innerHTML = numCotiz;
+function insertNumCotiz(totalrates){
+    const numrates = ` ${totalrates} `;
+    dataCotiz.innerHTML = numrates;
 }
 
 
 window.addEventListener("load",  function(){
     let cotizrow = document.getElementById("cotiz-table");
     let id = 0;
-    if (cotiz != null) {
-        cotiz.forEach(p => {
+    if (rates != null) {
+        rates.forEach(r => {
             id= id + 1;
             cotizrow.innerHTML += ` 
             <tr>
                 <th class"rowId" scope="row">${id}</th>
-                <td >${p.empresa}</td>
-                <td >${p.nombre}</td>
-                <td >${p.email}</td>
-                <td >${p.telefono}</td>
-                <td >${p.mensaje}</td>
+                <td >${r.empresa}</td>
+                <td >${r.nombre}</td>
+                <td >${r.email}</td>
+                <td >${r.telefono}</td>
+                <td >${r.mensaje}</td>
             </tr>`;
         });
     }      
-    
 });//onLoad

@@ -1,30 +1,21 @@
-function createFooter (){
+window.addEventListener("load", function(){
     let footer = document.getElementById("footer");
     let navigation = `
     <div class="container">
         <div class="footer-row">
             <div class="footer-links">
-                <h4>Compañía</h4>
-                <ul>
-                    <li><a href="./nosotros.html">Nosotros</a></li>
-                    <li><a href="./servicios.html">Nuestros servicios</a></li>
-                    <li><a href="./contacto.html">Contacto</a></li>
-                </ul> <br />
-                <h4><a href="./login.html" id="admin">Administradores</a></h4>
+                <h4>Nombre de la empresa</h4>
+                <p><a href="./us.html">¿Quiénes somos?</a></p>
+                <p><a href="./services.html">Conoce nuestros servicios</a></p>
+                <p><a href="./contact.html">Solicita una cotización</a></p>
+                <p><a href="./login.html" id="admin">Administradores</a></p>
             </div>
             <div class="footer-links">
                 <h4>Contáctanos</h4>
-                <ul>
-                    <li><a href="#">+52 5543604500</a></li>
-                    <li><a href="#">hello@myemail.com</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Horarios</h4>
-                <ul>
-                    <li><a href="#">09:00 a 18:00 hrs</a></li>
-                    <li><a href="#">(Cerrado los Domingos)</a></li>
-                </ul>
+                <p><a href="#"><i class="fa-solid fa-phone" ></i> +52 9991 577 539</a></p>
+                <p><a href="#"><i class="fa-solid fa-envelope" ></i> karen.891025@gmail.com</a></li></p>
+                <p><a href="#"><i class="fa-solid fa-clock" ></i> 09:00 a 18:00 hrs</a></p>
+                <p><a href="#"><i class="fa-solid fa-door-closed" ></i> Cerrado los Domingos</a></p>
             </div>
             <div class="footer-links">
                 <h4>Redes Sociales</h4>
@@ -32,29 +23,26 @@ function createFooter (){
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/soluciones-integrales-amr/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div> <br />
                 <h4>Desarrollado por</h4>
-                <ul>
-                    <li><a href="./magic-soft.html">MagicSoft</a></li>
-                </ul>
+                <p><a href="https://karen-valenzuela-landero.github.io/">Karen Valenzuela</a></p>
             </div>
         </div>
     </div>  
     `;
     footer.insertAdjacentHTML("afterbegin",navigation);
-}
 
-createFooter();
+    admin.addEventListener("click", function(event){
+        event.preventDefault();
+        const userLogged = JSON.parse(localStorage.getItem("user"));
+        //console.log(userLogged);//
+        if (userLogged == "" || userLogged == null) {
+            location.href ='./login.html';
+        } else{
+            location.href ='./gestion.html';
+        }
+    });//admin EvenListener
 
-console.log(localStorage.getItem("user"));//
+});//load footer
 
-admin.addEventListener("click", function(event){
-    event.preventDefault();
-    const userLogged = localStorage.getItem("user");
-    if (userLogged == "" || userLogged == null) {
-        location.href ='./login.html';
-    } else{
-        location.href ='./gestion.html';
-    }
-});//admin EvenListener

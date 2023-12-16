@@ -1,5 +1,6 @@
 const signupAlert = document.getElementById("signup-alert-container");
 let msj_error;
+let users; 
 
 const phoneRegEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
 const emailRegEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/
@@ -79,7 +80,6 @@ function validateSignup(name,phone,email,pass,repPw) {
   return true;
 }//validateSignup
 
-const users = new Array(); 
 btnSignUp.addEventListener("click", function(event){
   event.preventDefault();
   cleanSignupWarnings();
@@ -91,7 +91,8 @@ btnSignUp.addEventListener("click", function(event){
   const isValid = validateSignup($name,$phone,$email,$pass,$repPw);
   
   if (isValid){
-    const users = JSON.parse(localStorage.getItem("users"));
+    users = localStorage.getItem("users");
+    users = users==null ? new Array() : JSON.parse("users");
     let newUser = `{"nombre": "${$name.value}","teléfono": "${$phone.value}",
       "email": "${$email.value}", "contraseña": "${$pass.value}"}`;
 

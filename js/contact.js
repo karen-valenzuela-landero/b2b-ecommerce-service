@@ -154,7 +154,9 @@ function addContizToLocalStorage(contact_name, contact_company, contact_email, c
     let newCotiz = `{"empresa": "${contact_company}","nombre": "${contact_name}",
       "email": "${contact_email}", "telefono": "${contact_phone}", "mensaje": "${contact_message}",
       "servicio": "${service_value}"}`;
-
+    if (cotiz == null ) {
+      cotiz=[];
+    }
     cotiz.push(JSON.parse(newCotiz));//TODO: CHANGE to Fetch method POST
     localStorage.setItem("cotiz", JSON.stringify(cotiz));//TODO: CHANGE to Fetch method POST
 }

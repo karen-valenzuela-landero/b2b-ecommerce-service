@@ -34,7 +34,9 @@ body{
     font-size: x-large;
     color: #eee;
     text-decoration: none;
-    background-image: url(../src/magicsoft-bg.png);
+    background-image: url(../src/background-img.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .navbar-brand img {
     border-radius: 15%; 
@@ -77,7 +79,9 @@ body{
     height: fit-content;
     padding: 40px 0; 
     background-color: #294BF3;
-    background-image: url(../src/magicsoft-bg.png);
+    background-image: url(../src/background-img.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /**=====ANIMATIONS=====*/
 @keyframes rotateY {

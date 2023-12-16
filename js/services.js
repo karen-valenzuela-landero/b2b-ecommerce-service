@@ -24,22 +24,7 @@ function addCard(cards,service){
             </div>
         </div>
 
-        <div class="col">
-            <div class="card">
-                <img
-                    src=${img}
-                    class="card-img-top"
-                    alt="${titulo}"
-                    style="height: 200px"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">${titulo}</h5>
-                    <p class="card-text">
-                    ${descripcion}
-                    </p>
-                </div>
-            </div>
-        </div>`;
+       `;
 
     cards.innerHTML += templateCard;
 }
@@ -123,3 +108,19 @@ const serv10 = {
 addCard(services_cards, serv10)
 
 
+/*  <div class="col">
+            <div class="card">
+                <img
+                    src=${img}
+                    class="card-img-top"
+                    alt="${titulo}"
+                    style="height: 200px"
+                />
+                <div class="card-body">
+                    <h5 class="card-title">${titulo}</h5>
+                    <p class="card-text">
+                    ${descripcion}
+                    </p>
+                </div>
+            </div>
+        </div> */

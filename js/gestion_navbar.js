@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <div id="navbar-container" class="container-fluid">
             <a class="navbar-brand" href="./gestion.html">
-              <img src="./src/free-logo-space.jpg" alt="Logo AMR">
+              <img src="./src/free-logo-space.jpg" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" 
             data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" 
@@ -63,6 +63,13 @@ window.addEventListener("load", function(){
         event.preventDefault();
         localStorage.setItem("user", "");
         location.href ='./index.html';
-    });//logout
+    });//logout EvenListener
+
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      if (link.href === window.location.href) {
+          link.classList.add("active");
+          link.setAttribute("aria-current", "page");
+      }
+    });//nav-link active
 
 });//load Navbar

@@ -106,7 +106,7 @@
 }
 .flip-card-back {
     /*background-color: #f0b7ec;*/
-    background-image: url("../src/BGGIF.gif");
+    background-image: url(https://nebigdatahub.org/wp-content/uploads/2019/11/7T9364v.gif);
     color: floralwhite;
     transform: rotateY(180deg);
     border-radius: 15px;
@@ -116,4 +116,4 @@
 .parrafo {
     font-size: 1em;
     font-style: oblique;
-  }
+}

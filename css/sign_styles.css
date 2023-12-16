@@ -32,7 +32,9 @@ body{
     height: fit-content;
     color: #eee;
     text-decoration: none;
-    background-image: url(../src/magicsoft-bg.png);
+    background-image: url(../src/background-img.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .navbar-brand img{
     border-radius: 15%;

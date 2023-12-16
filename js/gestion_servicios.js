@@ -119,25 +119,15 @@ window.addEventListener("load", function(){
     let servicerow = document.getElementById("services-table");
     let id = 0;
     if (serv != null) {
-        serv.forEach(p => {
+        serv.forEach(s => {
             id= id + 1;
             servicerow.innerHTML += ` 
                 <tr>
                     <th class"rowId" scope="row">${id}</th>
-                    <td class="rowName">${p.nombre}</td>
-                    <td class="rowDesc">${p.descripción}</td>
-                    <td class="rowImg">${p.urlImage}</td>
+                    <td class="rowName">${s.nombre}</td>
+                    <td class="rowDesc">${s.descripción}</td>
+                    <td class="rowImg">${s.urlImage}</td>
                 </tr>`;
         });
-    }
-    
-       
-
+    }  
 });//onLoad Services
-
-/* let refresh = document.getElementById("refresh-icon");
-refresh.addEventListener("click", function(event){
-    event.preventDefault();
-    let servicerow = document.getElementById("services-table");
-    loadServices(servicerow); 
-});//btnRefresh */
